@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "name": "DeadPool",
+      "adress": "https://m.media-amazon.com/images/I/61sWaXWytdL._AC_SL1000_.jpg",
+      "price": 15,
+      "description": "Le combattant immortel",
+      "userId": "/api/users/1"
+    },
+    {
+      "id": 2,
+      "name": "Minato",
+      "adress": "https://static.fnac-static.com/multimedia/Images/2B/2B/E3/E8/15262507-1505-1505-1/tsp20221213210853/Figurine-Funko-Pop-Animation-Naruto-Glow-Chase.jpg",
+      "price": 25,
+      "description": "Le plus rapide des ninja",
+      "userId": "/api/users/1"
+    },
+    {
+      "id": 3,
+      "name": "Thresh",
+      "adress": "https://www.cdiscount.com/pdt2/0/3/9/1/700x700/fun0889698103039/rw/funko-figurine-league-of-legends-thresh-pop-10.jpg",
+      "price": 10,
+      "description": "Un grab d'exception",
+      "userId": "/api/users/1"
+    }
+  ]

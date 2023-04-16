@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Task 1",
+    "description": "Ranger sa chambre",
+    "userId": "/api/users/1"
+  },
+  {
+    "id": 2,
+    "title": "Task 2",
+    "description": "La défaire",
+    "userId": "/api/users/1"
+  },
+  {
+    "id": 3,
+    "title": "Task 3",
+    "description": "Et y rajouter de la poudre de perlinpinin",
+    "userId": "/api/users/1"
+  },
+  {
+    "id": 4,
+    "title": "Test",
+    "description": "A travers api PLatform",
+    "userId": "/api/users/1"
+  },
+  {
+    "id": 5,
+    "title": "test 5",
+    "description": "5 ça passe",
+    "userId": "/api/users/1"
+  },
+  {
+    "id": 6,
+    "title": "yan",
+    "description": "t une pauvre merde",
+    "userId": "/api/users/1"
+  },
+  {
+    "id": 7,
+    "title": "dernier ",
+    "description": "test",
+    "userId": "/api/users/1"
+  }
+]
