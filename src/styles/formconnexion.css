@@ -23,6 +23,13 @@ input {
     width: 20%;
 }
 
+.icon-label {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    color: white;
+}
+
 button {
     background-color: #5E8CFF;
     border: none;

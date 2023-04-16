@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 function HomePage() {
     return (
         <div className='container'>
-            <img src={logo} alt='logo e-world' className='lmj-logo' />
+            <img src={logo} alt='logo e-world' className='lme-logo' />
             <h1>Bienvenue sur E-WORLD</h1>
             <div className='divbutton'>
-                <Link to={`/log`}>
+                <Link to={`/log`} className="buttonhome">
                     Connexion
                 </Link>
-                <Link to={`/register`}>
+                <Link to={`/register`} className="buttonhome">
                     Inscription
                 </Link>
             </div>
