@@ -36,3 +36,10 @@ button:hover {
     color: #5E8CFF;
     border: solid 3px #5E8CFF;
 }
+
+.textfield {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    color: aqua;
+}

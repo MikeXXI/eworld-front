@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/forminscription.css.css'
+import '../styles/forminscription.css'
 import logo from '../assets/logoeworld.png'
 
 const Inscription = () => {
