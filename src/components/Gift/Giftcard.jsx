@@ -6,26 +6,24 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
 
-function Giftcard({ id, name, adress, price, description}) {
+function Giftcard({ id, name, adress, price, description }) {
 
     return (
         <Grid sx={{
             position: 'center',
-            width: 300,
-            height: 300,
+            width: 1500,
+            height: 350,
             margin: 1,
+            backgroundColor: 'red',
         }}>
-            <Link to={`/gift/${id}`}
-                id={id}                
-                sx={{ textDecoration: 'none' }}>
-                <Card
-                    sx={{ height: 300, width: 300 }}>
-                    N°{id}
-                    <CardContent >
-                        <Typography gutterBottom variant="h6" component="div">
-                            {name}
-                        </Typography>
-                        <CardMedia
+            <Card
+                sx={{ height: 350, width: 1500 }}>
+                N°{id}
+                <CardContent >
+                    <Typography gutterBottom variant="h6" component="div">
+                        {name}
+                    </Typography>
+                    <CardMedia
                         sx={{
                             height: 150,
                             width: 125,
@@ -35,17 +33,19 @@ function Giftcard({ id, name, adress, price, description}) {
                         image={adress}
                         title={adress}
                     />
-                        <Typography gutterBottom variant="h6" component="div">
-                        </Typography>
-                        <Typography gutterBottom variant="h6" component="div">
-                            {price}€
-                        </Typography>
-                        <Typography gutterBottom variant="h6" component="div">
-                            {description}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </Link>
+                    <Typography gutterBottom variant="h6" component="div">
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="div">
+                        {price}€
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="div">
+                        {description}
+                    </Typography>
+                    <Link to={`/gift/delete/${id}`}
+                        id={id}
+                        >Supprimer</Link>
+                </CardContent>
+            </Card>
         </Grid>
     );
 }

@@ -23,8 +23,10 @@ export default function App() {
         <Route path="/task" element={<Task />}/>
         <Route path="/task/:id" element={<Task />} />
         <Route path="/task/add" element={<Addtask />} />
+        <Route path="/task/delete/:id" element={<Task />} />
         <Route path="/gift" element={<Gift />} />
         <Route path="/gift/add" element={<Addgift />} />
+        <Route path="/gift/delete/:id" element={<Gift />} />
       </>
     )
   );

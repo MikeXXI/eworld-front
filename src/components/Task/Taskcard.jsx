@@ -10,16 +10,14 @@ function Taskcard({ id, title, description}) {
     return (
         <Grid sx={{
             position: 'center',
-            width: 300,
-            height: 300,
+            width: 1500,
+            height: 200,
             margin: 1,
+            backgroundColor: 'red',
         }}>
-            <Link to={`/task/${id}`}
-                id={id}                
-                sx={{ textDecoration: 'none' }}>
-                <Card
-                    sx={{ height: 300, width: 300 }}>
-                    N°{id}
+            <Card
+                sx={{ height: 200, width: 1500 }}>
+                N°{id}
                     <CardContent >
                         <Typography gutterBottom variant="h4" component="div">
                             {title}
@@ -27,9 +25,12 @@ function Taskcard({ id, title, description}) {
                         <Typography gutterBottom variant="h6" component="div">
                             {description}
                         </Typography>
+                        <Link to={`/task/delete/${id}`}
+                        id={id}
+                        >Supprimer</Link>
                     </CardContent>
                 </Card>
-            </Link>
+            
         </Grid>
     );
 }

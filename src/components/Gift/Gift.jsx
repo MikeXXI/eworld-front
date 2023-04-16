@@ -3,7 +3,7 @@ import { Box, Grid, Container } from '@mui/material';
 import Giftlist from './Giftlist';
 
 
-function Task() {
+function Gift() {
     const [giftData, setGiftData] = useState([]);
     const [load, isLoad] = useState(true);
 
@@ -36,4 +36,4 @@ function Task() {
     );
 }
 
-export default Task;
+export default Gift;
