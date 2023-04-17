@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
+import '../../styles/style.css';
 
 function Taskcard({ id, title, description}) {
 
@@ -11,22 +12,19 @@ function Taskcard({ id, title, description}) {
         <Grid sx={{
             position: 'center',
             width: 1500,
-            height: 200,
             margin: 1,
-            backgroundColor: 'red',
-        }}>
-            <Card
-                sx={{ height: 200, width: 1500 }}>
+        }} className="gridCard">
+            <Card className="cardContent">
                 N°{id}
-                    <CardContent >
-                        <Typography gutterBottom variant="h4" component="div">
+                    <CardContent>
+                        <Typography gutterBottom variant="h4" component="div" className="h4">
                             {title}
                         </Typography>
-                        <Typography gutterBottom variant="h6" component="div">
+                        <Typography gutterBottom variant="h6" component="div" className="decription">
                             {description}
                         </Typography>
                         <Link to={`/task/delete/${id}`}
-                        id={id}
+                        id={id} className="buttonsupp"
                         >Supprimer</Link>
                     </CardContent>
                 </Card>

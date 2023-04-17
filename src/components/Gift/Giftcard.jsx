@@ -14,7 +14,6 @@ function Giftcard({ id, name, adress, price, description }) {
             width: 1500,
             height: 350,
             margin: 1,
-            backgroundColor: 'red',
         }}>
             <Card
                 sx={{ height: 350, width: 1500 }}>

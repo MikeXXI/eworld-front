@@ -1,0 +1,25 @@
+.gridCard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.h4 {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.decription {
+    margin-bottom: 30px !important;
+}
+
+.cardContent {
+    background-color: #9CECFF !important;
+}
+
+.buttonsupp{
+    color: #9CECFF;
+    text-decoration: none;
+    background-color: #111B2E;
+    padding: 10px;
+    border-radius: 10px;
+}
