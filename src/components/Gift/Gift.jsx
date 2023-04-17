@@ -37,6 +37,9 @@ function Gift() {
                 <Link to={`/gift/add`} className="bouttonadd">
                     Ajouter un Cadeau
                 </Link>
+                <Link to={`/`} className="bouttonadd">
+                    Retour accueil
+                </Link>
             </div>
       {load ?
         <Grid>

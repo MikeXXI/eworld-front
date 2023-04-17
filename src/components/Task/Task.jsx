@@ -37,6 +37,9 @@ function Task() {
             <Link to={`/task/add`} className="bouttonadd">
                 Ajouter une tâche
             </Link>
+                <Link to={`/`} className="bouttonadd">
+                    Retour accueil
+                </Link>
             </div>
             {load ?
         <Grid>
