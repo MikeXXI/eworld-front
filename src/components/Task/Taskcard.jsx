@@ -15,7 +15,6 @@ function Taskcard({ id, title, description}) {
             margin: 1,
         }} className="gridCard">
             <Card className="cardContent">
-                N°{id}
                     <CardContent>
                         <Typography gutterBottom variant="h4" component="div" className="h4">
                             {title}

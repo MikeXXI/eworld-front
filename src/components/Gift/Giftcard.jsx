@@ -14,26 +14,33 @@ function Giftcard({ id, name, adress, price, description }) {
             width: 1500,
             height: 350,
             margin: 1,
-        }}>
-            <Card
+        }} className="gridCard">
+            <Card className="cardContent"
                 sx={{ height: 350, width: 1500 }}>
-                N°{id}
                 <CardContent >
-                    <Typography gutterBottom variant="h6" component="div">
+                    <Typography gutterBottom variant="h6" component="div"
+                    sx={{
+                        backgroundColor: "#111B2E",
+                        color: "white",
+                        margin: 0,
+                        height: 20,
+                        padding: 2,
+                        borderRadius: 2,
+                    }}>
                         {name}
                     </Typography>
                     <CardMedia
                         sx={{
-                            height: 150,
-                            width: 125,
+                            height: 120,
+                            width: 175,
                             margin: 'auto',
-                            position: 'center',
+                            position: 'right',
+                            backgroundColor: 'red',
+                            padding: 2,
                         }}
                         image={adress}
                         title={adress}
                     />
-                    <Typography gutterBottom variant="h6" component="div">
-                    </Typography>
                     <Typography gutterBottom variant="h6" component="div">
                         {price}€
                     </Typography>
@@ -41,7 +48,7 @@ function Giftcard({ id, name, adress, price, description }) {
                         {description}
                     </Typography>
                     <Link to={`/gift/delete/${id}`}
-                        id={id}
+                        id={id} className="buttonsupp"
                         >Supprimer</Link>
                 </CardContent>
             </Card>

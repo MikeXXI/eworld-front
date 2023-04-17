@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import '../styles/formconnexion.css'
 import logo from '../assets/logoeworld.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock} from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -15,12 +16,13 @@ const LoginForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <img src={logo} alt='logo e-world' className='lmj-logo' />
-            <h1>Connexion</h1>
-            <label htmlFor="username" className="icon-label">
-                <FontAwesomeIcon icon={faUser} />
-            </label>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <img src={logo} alt='logo e-world' className='lmj-logo' />
+                <h1>Connexion</h1>
+                <label htmlFor="username" className="icon-label">
+                    <FontAwesomeIcon icon={faUser} />
+                </label>
                 <input
                     type="email"
                     placeholder={"Email"}
@@ -28,9 +30,9 @@ const LoginForm = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-            <label htmlFor="username" className="icon-label">
-                <FontAwesomeIcon icon={faLock} />
-            </label>
+                <label htmlFor="username" className="icon-label">
+                    <FontAwesomeIcon icon={faLock} />
+                </label>
                 <input
                     placeholder={"Password"}
                     type="password"
@@ -38,8 +40,12 @@ const LoginForm = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-            <button type="submit">Connexion</button>
-        </form>
+                <button type="submit">Connexion</button>
+            </form>
+            <Link to='/'>
+                <button>Retour à l'accueil</button>
+            </Link>
+        </div>
     );
 };
 

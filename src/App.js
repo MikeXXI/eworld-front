@@ -23,7 +23,6 @@ export default function App() {
         <Route path="/log" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/task" element={<Task />}/>
-        {/* <Route path="/task/:taskId" element={<Task />} /> */}
         <Route path="/task/add" element={<Addtask />} />
         <Route path="/task/delete/:taskId" element={<Deletetask />} />
         <Route path="/gift" element={<Gift />} />
