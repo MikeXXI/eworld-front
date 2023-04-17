@@ -1,30 +1,26 @@
 import React from 'react';
 import { useParams, useNavigate } from "react-router";
-
 import { Link } from "react-router-dom";
 import logo from '../../assets/logoeworld.png'
 
 const Deletetask = () => {
-
     const { taskId } = useParams();
     const navigate = useNavigate();
-
     const handleSubmit = (event) => {
         event.preventDefault();
-
         fetch(`http://127.0.0.1:8000/api/tasks/${taskId}`, {
             method: 'DELETE'
         })
-        .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-
-        navigate('/task');
+            .then(response => {
+                console.log(response.data);
+                navigate('/task');
+            })
+            .catch(error => {
+                console.log(error);
+                alert('Erreur lors de la suppression de la tâche')
+            });
+        
     };
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -35,11 +31,7 @@ const Deletetask = () => {
             <Link to='/task'>
                 <button>Retour</button>
             </Link>
-
         </div>
-
-
     );
 };
-
 export default Deletetask;

@@ -1,30 +1,26 @@
 import React from 'react';
 import { useParams, useNavigate } from "react-router";
-
 import { Link } from "react-router-dom";
 import logo from '../../assets/logoeworld.png'
 
-const Deletegift= () => {
-
+const Deletegift = () => {
     const { giftId } = useParams();
     const navigate = useNavigate();
-
     const handleSubmit = (event) => {
         event.preventDefault();
-
         fetch(`http://127.0.0.1:8000/api/gifts/${giftId}`, {
             method: 'DELETE'
         })
-        .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-
-        navigate('/gift');
+            .then(response => {
+                console.log(response.data);
+                navigate('/gift');
+            })
+            .catch(error => {
+                console.log(error);
+                alert('Erreur lors de la suppression du cadeau')
+            });
+        
     };
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -35,11 +31,7 @@ const Deletegift= () => {
             <Link to='/task'>
                 <button>Retour</button>
             </Link>
-
         </div>
-
-
     );
 };
-
 export default Deletegift;

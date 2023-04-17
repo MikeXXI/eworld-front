@@ -9,7 +9,6 @@ const Addgift = () => {
     const [description, setDescription] = useState('');
     const navigate = useNavigate();
     const user_id = "/api/users/1"
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = {
@@ -20,8 +19,6 @@ const Addgift = () => {
             userId: user_id
         }
         const jsonData = JSON.stringify(data);
-
-
         fetch('http://127.0.0.1:8000/api/gifts', {
             method: 'POST',
             headers: {
@@ -32,10 +29,8 @@ const Addgift = () => {
             .then(response => response.json())
             .then(jsonData => console.log(jsonData))
             .catch(error => console.error(error));
-
             navigate('/gift');
     };
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -63,5 +58,4 @@ const Addgift = () => {
         </div>
     );
 };
-
 export default Addgift;
