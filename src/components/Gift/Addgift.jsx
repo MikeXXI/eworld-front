@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
 
-const Inscription = () => {
+const Addgift = () => {
     const [name, setName] = useState('');
     const [adress, setAdress] = useState('');
     const [price, setPrice] = useState('');
@@ -64,4 +64,4 @@ const Inscription = () => {
     );
 };
 
-export default Inscription;
+export default Addgift;

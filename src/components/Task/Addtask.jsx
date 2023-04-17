@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
 
-const Inscription = () => {
+const Addtask = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const navigate = useNavigate();
@@ -52,4 +52,4 @@ const Inscription = () => {
     );
 };
 
-export default Inscription;
+export default Addtask;

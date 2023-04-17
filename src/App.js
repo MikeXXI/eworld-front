@@ -9,8 +9,10 @@ import Login from './components/Loginpage';
 import Register from './components/Register';
 import Task from './components/Task/Task';
 import Addtask from './components/Task/Addtask';
+import Deletetask from './components/Task/Deletetask';
 import Gift from './components/Gift/Gift';
 import Addgift from './components/Gift/Addgift';
+import Deletegift from './components/Gift/Deletegift';
 
 
 export default function App() {
@@ -21,12 +23,12 @@ export default function App() {
         <Route path="/log" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/task" element={<Task />}/>
-        <Route path="/task/:id" element={<Task />} />
+        {/* <Route path="/task/:taskId" element={<Task />} /> */}
         <Route path="/task/add" element={<Addtask />} />
-        <Route path="/task/delete/:id" element={<Task />} />
+        <Route path="/task/delete/:taskId" element={<Deletetask />} />
         <Route path="/gift" element={<Gift />} />
         <Route path="/gift/add" element={<Addgift />} />
-        <Route path="/gift/delete/:id" element={<Gift />} />
+        <Route path="/gift/delete/:giftId" element={<Deletegift />} />
       </>
     )
   );
