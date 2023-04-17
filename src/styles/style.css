@@ -1,11 +1,11 @@
-.gridCard {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
 .h4 {
     text-transform: uppercase;
     font-weight: 900;
+}
+
+.titleSup {
+    display: flex;
+    justify-content: space-between;
 }
 
 .decription {

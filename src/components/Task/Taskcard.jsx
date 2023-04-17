@@ -5,6 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
 import '../../styles/style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function Taskcard({ id, title, description}) {
 
@@ -16,15 +18,16 @@ function Taskcard({ id, title, description}) {
         }} className="gridCard">
             <Card className="cardContent">
                     <CardContent>
-                        <Typography gutterBottom variant="h4" component="div" className="h4">
+                        <div className="titleSup">
+                        <Typography style={{ margin: 0 }} gutterBottom variant="h4" component="div" className="h4">
+                            <FontAwesomeIcon icon={faUser} />
                             {title}
                         </Typography>
+                        <Link to={`/task/delete/${id}`} id={id} className="buttonsupp">Supprimer</Link>
+                        </div>
                         <Typography gutterBottom variant="h6" component="div" className="decription">
                             {description}
                         </Typography>
-                        <Link to={`/task/delete/${id}`}
-                        id={id} className="buttonsupp"
-                        >Supprimer</Link>
                     </CardContent>
                 </Card>
             
