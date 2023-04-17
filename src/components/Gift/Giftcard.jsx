@@ -5,13 +5,19 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import '../../styles/style.css';
 
 function Giftcard({ id, name, adress, price, description }) {
 
     return (
-        <Grid sx={{ position: 'center', width: 1500, height: 350, margin: 1}} className="gridCard">
-            <Card className="cardContent"
-                sx={{ height: 350, width: 1500 }}>
+        <Grid sx={{
+            position: 'center',
+            width: 1500,
+            height: 350,
+        }} className="gridCard">
+            <Card className="cardContent">
                 <CardContent >
                     <Typography gutterBottom variant="h6" component="div" sx={{ backgroundColor: "#111B2E", color: "white", height: 20, padding: 2, borderRadius: 2}}>
                         {name}

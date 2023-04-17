@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
+import '../../styles/formconnexion.css'
+
 
 const Addgift = () => {
     const [name, setName] = useState('');
@@ -37,20 +39,16 @@ const Addgift = () => {
                 <img src={logo} alt='logo e-world' className='lmj-logo' />
                 <h1>Ajout un cadeaux</h1>
                 <div>
-                    <label htmlFor="name">Nom :</label>
-                    <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input placeholder={"Nom"} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="adress">Adresse :</label>
-                    <input type="text" id="adress" value={adress} onChange={(e) => setAdress(e.target.value)} />
+                    <input placeholder={"Adresse"}  type="text" id="adress" value={adress} onChange={(e) => setAdress(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="price">Prix :</label>
-                    <input type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                    <input placeholder={"Prix"}  type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="description">Description :</label>
-                    <input type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <input placeholder={"Description"}  type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
 
                 <button type="submit">Ajouter un cadeau</button>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
+import '../../styles/formconnexion.css'
+
 
 const Addtask = () => {
     const [title, setTitle] = useState('');
@@ -38,12 +40,10 @@ const Addtask = () => {
                 <img src={logo} alt='logo e-world' className='lmj-logo' />
                 <h1>Ajout d'une tache</h1>
                 <div>
-                    <label htmlFor="title">Titre :</label>
-                    <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <input placeholder={"Titre"} type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="description">Description :</label>
-                    <input type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <input placeholder={"Description"} type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
 
                 <button type="submit">Ajouter une tâche</button>
