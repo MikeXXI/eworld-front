@@ -21,7 +21,7 @@ const Addgift = () => {
             userId: user_id
         }
         const jsonData = JSON.stringify(data);
-        fetch('http://127.0.0.1:8000/api/gifts', {
+        fetch('https://eworld-api.osc-fr1.scalingo.io/api/gifts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

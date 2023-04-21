@@ -8,7 +8,7 @@ const Deletegift = () => {
     const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://127.0.0.1:8000/api/gifts/${giftId}`, {
+        fetch(`https://eworld-api.osc-fr1.scalingo.io/api/gifts/${giftId}`, {
             method: 'DELETE'
         })
             .then(response => {

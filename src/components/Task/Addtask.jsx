@@ -20,7 +20,7 @@ const Addtask = () => {
         const jsonData = JSON.stringify(data);
 
 
-        fetch('http://127.0.0.1:8000/api/tasks', {
+        fetch('https://eworld-api.osc-fr1.scalingo.io/api/tasks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

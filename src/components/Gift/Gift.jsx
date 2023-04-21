@@ -20,7 +20,7 @@ function Gift() {
 
     useEffect(function () {
         isLoad(true)
-        fetch("http://127.0.0.1:8000/api/gifts")
+        fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")
           .then(res => res.json())
           .then(data => {
             isLoad(false)

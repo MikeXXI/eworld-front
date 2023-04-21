@@ -8,7 +8,7 @@ const Deletetask = () => {
     const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://127.0.0.1:8000/api/tasks/${taskId}`, {
+        fetch(`https://eworld-api.osc-fr1.scalingo.io/api/tasks/${taskId}`, {
             method: 'DELETE'
         })
             .then(response => {

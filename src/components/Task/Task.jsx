@@ -20,7 +20,7 @@ function Task() {
 
     useEffect(function () {
        isLoad(true)
-      fetch("http://127.0.0.1:8000/api/tasks")
+      fetch("https://eworld-api.osc-fr1.scalingo.io/api/tasks")
           .then(res => res.json())
           .then(data => {
            isLoad(false)
