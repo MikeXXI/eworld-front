@@ -1,12 +1,12 @@
-import React from "react";
-import Inscription from "./forminscription";
+// import React from "react";
+// import Inscription from "./forminscription";
 
-const Inscriptionpage = () => {
-    return (
-        <div>
-            <Inscription />
-        </div>
-    );
-};
+// const Inscriptionpage = () => {
+//     return (
+//         <div>
+//             <Inscription />
+//         </div>
+//     );
+// };
 
-export default Inscriptionpage;
+// export default Inscriptionpage;
