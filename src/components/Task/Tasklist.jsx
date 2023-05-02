@@ -9,8 +9,8 @@ function Tasklist({taskData}) {
         <Taskcard key={task.id} id={task.id} title={task.title} description={task.description} />)    
     })
     return (
-        <div style={{ maxHeight: 400, maxWidth: 600, overflow: 'auto' }}>
-            <Grid container sx={{ justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ display: 'flex', maxHeight: 400, maxWidth: 600, overflow: 'auto', justifyContent: 'right' }}>
+            <Grid container>
                 {tasks}
             </Grid>
         </div>
