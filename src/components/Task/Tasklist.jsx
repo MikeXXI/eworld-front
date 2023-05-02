@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid } from "@mui/material";
+import { Grid} from "@mui/material";
 import Taskcard from "./Taskcard";
 
 function Tasklist({taskData}) {
@@ -9,9 +9,11 @@ function Tasklist({taskData}) {
         <Taskcard key={task.id} id={task.id} title={task.title} description={task.description} />)    
     })
     return (
-        <Grid container sx={{ justifyContent: 'center', alignItems: 'center' }}>
-            {tasks}
-        </Grid>
+        <div style={{ maxHeight: 400, maxWidth: 600, overflow: 'auto' }}>
+            <Grid container sx={{ justifyContent: 'center', alignItems: 'center' }}>
+                {tasks}
+            </Grid>
+        </div>
     );
 }
 

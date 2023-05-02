@@ -1,0 +1,12 @@
+{
+  "id": 123,
+  "username": "johndoe",
+  "email": "johndoe@example.com",
+  "password": "123456",
+  "firstName": "John",
+  "lastName": "Doe",
+  "age": 30,
+  "gender": "male",
+  "createdAt": "2022-04-25T15:30:00Z",
+  "updatedAt": "2022-04-25T15:45:00Z"
+}
