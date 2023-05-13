@@ -20,9 +20,11 @@ function Giftlist({giftData}) {
         });
     }
     return (
-        <Grid container sx={{ justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ display: 'flex', maxHeight: 400, maxWidth: 600, overflow: 'auto', justifyContent: 'right' }}>
+        <Grid container>
             {gifts}
         </Grid>
+        </div>
     );
 }
 

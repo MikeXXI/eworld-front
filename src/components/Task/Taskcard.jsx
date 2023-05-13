@@ -29,8 +29,7 @@ function Taskcard({ id, title, description}) {
                             {description}
                         </Typography>
                     </CardContent>
-                </Card>
-            
+            </Card>
         </Grid>
     );
 }

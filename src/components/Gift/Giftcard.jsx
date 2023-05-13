@@ -13,7 +13,7 @@ function Giftcard({ id, name, adress, price, description }) {
         <Grid sx={{
             position: 'center',
             width: 1500,
-            height: 350,
+            height: 1,
         }} className="gridCard">
             <Card className="cardContent">
                 <CardContent >
