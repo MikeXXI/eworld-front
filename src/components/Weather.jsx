@@ -52,12 +52,13 @@ class Weather extends Component {
     }
 
     return (
-      <div style={{ color: 'white', background: '#9CECFF', borderRadius: 20, padding: 20, height: '50%'}}>
-        <h2>NICE</h2>
-        <p style={{fontSize: 20, fontWeight: 'bold'}}>{temperature}°C</p>
-        <p>{icon}</p>
-        <p>{windIcon} {windSpeed} m/s</p>
-        <p>{humidityIcon} {humidity}%</p>
+      <div style={{ color: 'white', background: '#9CECFF', borderRadius: 20, padding: 20, display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <div style={{display: 'flex', flexDirection: 'column', marginRight: '5px'}}>
+        <p style={{ margin: '4px' }}>{icon} {description}</p>
+        <p style={{ margin: '4px' }}>{windIcon} {windSpeed} m/s</p>
+        <p style={{ margin: '4px' }}>{humidityIcon} {humidity}%</p>
+        </div>
+        <p style={{fontSize: 40, fontWeight: 'bold', margin: '0'}}>{temperature}°C</p>
       </div>
     );
   }

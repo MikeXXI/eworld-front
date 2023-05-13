@@ -4,10 +4,21 @@ import Giftcard from "./Giftcard";
 
 function Giftlist({giftData}) {
     const gifts = [];
-    giftData.forEach((gift) => {
-        gifts.push(
-        <Giftcard key={gift.id} id={gift.id} name={gift.name} adress={gift.adress} price={gift.price} description={gift.description} />)    
-    })
+
+    if (Array.isArray(giftData)) {
+        giftData.forEach((gift) => {
+            gifts.push(
+                <Giftcard
+                    key={gift.id}
+                    id={gift.id}
+                    name={gift.name}
+                    adress={gift.adress}
+                    price={gift.price}
+                    description={gift.description}
+                />
+            );
+        });
+    }
     return (
         <Grid container sx={{ justifyContent: 'center', alignItems: 'center' }}>
             {gifts}

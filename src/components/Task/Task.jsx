@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {Box, Grid, Container, Fab, Button} from '@mui/material';
+import {Box, Grid, Fab, Button} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Tasklist from './Tasklist';
 import Weather from '../Weather';
 import logo from "../../assets/logoeworld.png";
+import person from "../../assets/logosneakbyyan.png";
 import { Link } from 'react-router-dom';
 import '../../styles/style.css';
 import CircularProgress from "@mui/material/CircularProgress";
+import CurrentDate from "../CurrentDate";
 
 function Task() {
   const [taskData, setTaskData] = useState([]);
@@ -24,9 +26,19 @@ function Task() {
   }, []);
 
   return (
-        <Container>
+      <div>
             <div className="divHeader">
+                <h1>Bienvenue,<br/> Marion</h1>
             <img src={logo} alt='logo e-world'/>
+                <div style={{ display: 'flex', flexDirection: 'row'}}>
+                <div>
+                    <img src={person} style={{ width: '15%', borderRadius: 100}} alt="imgPersonne"/>
+                    <CurrentDate />
+                </div>
+                <Link to={`/`}>
+                    <Button variant="outlined" size="large" sx={{ backgroundColor: '#5E8CFF', color: 'black', borderRadius: '20px', '&:hover': {backgroundColor: '#111B2E', color: 'white',},}}>Deconnexion</Button>
+                </Link>
+                </div>
             </div>
             {load ? (
         <Grid>
@@ -35,8 +47,8 @@ function Task() {
           </Box>
         </Grid>
       ) : (
-        <div style={{ display: 'flex',justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex',justifyContent: 'left'}}>
+        <div style={{ display: 'flex',justifyContent: 'space-between'}}>
+            <div style={{ display: 'flex', marginLeft: '20%', flexDirection: 'column'}}>
             <Weather />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -51,10 +63,7 @@ function Task() {
             </div>
         </div>
       )}
-            <Link to={`/`}>
-                <Button variant="outlined" size="large" sx={{ width: 300, backgroundColor: '#5E8CFF', color: 'black', borderRadius: '20px',marginTop: '20px', '&:hover': {backgroundColor: '#111B2E', color: 'white',},}}>Retour</Button>
-            </Link>
-    </Container>
+      </div>
   );
 }
 

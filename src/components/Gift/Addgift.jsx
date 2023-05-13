@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
-import '../../styles/formconnexion.css'
 
 
 const Addgift = () => {
@@ -34,24 +33,24 @@ const Addgift = () => {
             navigate('/gift');
     };
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <img src={logo} alt='logo e-world' className='lmj-logo' />
-                <h1>Ajout un cadeaux</h1>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <img src={logo} alt='logo e-world' style={{width: "30%"}} />
+                <h1 style={{ color: "#5E8CFF", fontWeight: 500, fontSize: "4rem", marginTop: "2rem", marginBottom: "2rem"}}>Ajout un cadeaux</h1>
                 <div>
-                    <input placeholder={"Nom"} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input placeholder={"Nom"} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} style={{ width: "100%", padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
                 </div>
                 <div>
-                    <input placeholder={"Adresse"}  type="text" id="adress" value={adress} onChange={(e) => setAdress(e.target.value)} />
+                    <input placeholder={"Adresse"}  type="text" id="adress" value={adress} onChange={(e) => setAdress(e.target.value)} style={{ width: "100%", padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
                 </div>
                 <div>
-                    <input placeholder={"Prix"}  type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                    <input placeholder={"Prix"}  type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} style={{ width: "100%", padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
                 </div>
                 <div>
-                    <input placeholder={"Description"}  type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <input placeholder={"Description"}  type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ width: "100%", padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
                 </div>
 
-                <button type="submit">Ajouter un cadeau</button>
+                <button type="submit" style={{ backgroundColor: '#5E8CFF', border: "none", borderRadius: '20px', padding: "15px", '&:hover': {backgroundColor: '#111B2E', color: '#5E8CFF', border: "solid 3px #5E8CFF",},}}>Ajouter un cadeau</button>
             </form>
         </div>
     );

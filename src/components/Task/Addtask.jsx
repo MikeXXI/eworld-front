@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
-import '../../styles/formconnexion.css'
-
 
 const Addtask = () => {
     const [title, setTitle] = useState('');
@@ -35,18 +33,18 @@ const Addtask = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <img src={logo} alt='logo e-world' className='lmj-logo' />
-                <h1>Ajout d'une tache</h1>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <img src={logo} alt='logo e-world' style={{width: "30%"}}/>
+                <h1 style={{ color: "#5E8CFF", fontWeight: 500, fontSize: "4rem", marginTop: "2rem", marginBottom: "2rem"}}>Ajout d'une tache</h1>
                 <div>
-                    <input placeholder={"Titre"} type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <input placeholder={"Titre"} type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: "100%", padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
                 </div>
                 <div>
-                    <input placeholder={"Description"} type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <input placeholder={"Description"} type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ width: "100%",padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
                 </div>
 
-                <button type="submit">Ajouter une tâche</button>
+                <button type="submit" style={{ backgroundColor: '#5E8CFF', border: "none", borderRadius: '20px', padding: "15px", '&:hover': {backgroundColor: '#111B2E', color: '#5E8CFF', border: "solid 3px #5E8CFF",},}}>Ajouter une tâche</button>
             </form>
         </div>
     );

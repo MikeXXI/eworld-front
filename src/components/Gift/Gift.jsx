@@ -1,52 +1,76 @@
-import React, { useEffect, useState } from 'react';
-import {Box, Grid, Container, Button, Fab} from '@mui/material';
 import Giftlist from './Giftlist';
+import React, { useEffect, useState } from 'react';
+import {Box, Grid, Fab, Button} from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import Weather from '../Weather';
 import logo from "../../assets/logoeworld.png";
+import person from "../../assets/logosneakbyyan.png";
 import { Link } from 'react-router-dom';
 import '../../styles/style.css';
-import AddIcon from "@mui/icons-material/Add";
 import CircularProgress from "@mui/material/CircularProgress";
+import CurrentDate from "../CurrentDate";
+
 
 function Gift() {
-  const [giftData, setGiftData] = useState([]);
-  const [load, isLoad] = useState(true);
+    const [giftData, setGiftData] = useState([]);
+    const [load, isLoad] = useState(true);
 
-  useEffect(function () {
-    isLoad(true);
-    fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")
-      .then((res) => res.json())
-      .then((data) => {
-        isLoad(false);
-        setGiftData(data);
-      });
-  }, []);
+    useEffect(function () {
+        isLoad(true);
+        fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")
+            .then((res) => res.json())
+            .then((data) => {
+                isLoad(false);
+                setGiftData(data);
+                console.log(data);
+            });
+    }, []);
 
 
     return (
-        <Container>
+        <div>
             <div className="divHeader">
+                <h1>Bienvenue,<br/> Marion</h1>
                 <img src={logo} alt='logo e-world'/>
-                <Link to={`/gift/add`}>
-                    <Fab color="primary" aria-label="add">
-                        <AddIcon />
-                    </Fab>
-                </Link>
-                <Link to={`/`}>
-                    <Button variant="outlined" size="large" sx={{ width: 300, backgroundColor: '#5E8CFF', color: 'black', borderRadius: '20px',marginTop: '20px', '&:hover': {backgroundColor: '#111B2E', color: 'white',},}}>Retour</Button>
-                </Link>
+                <div style={{ display: 'flex', flexDirection: 'row'}}>
+                    <div>
+                        <img src={person} style={{ width: '15%', borderRadius: 100}} alt="imgPersonne"/>
+                        <CurrentDate />
+                    </div>
+                    <Link to={`/`}>
+                        <Button variant="outlined" size="large" sx={{ backgroundColor: '#5E8CFF', color: 'black', borderRadius: '20px', '&:hover': {backgroundColor: '#111B2E', color: 'white',},}}>Deconnexion</Button>
+                    </Link>
+                </div>
             </div>
-      {load ? (
-        <Grid>
-          <Box sx={{ display: "flex" }}>
-            <CircularProgress />
-          </Box>
-        </Grid>
-      ) : (
-        <Grid>
-          <Giftlist giftData={giftData} />
-        </Grid>
-      )}
-    </Container>
-  );
+            {load ? (
+                <Grid>
+                    <Box sx={{ display: "flex"}}>
+                        <CircularProgress />
+                    </Box>
+                </Grid>
+            ) : (
+                <div style={{ display: 'flex',justifyContent: 'space-between'}}>
+                    <div style={{ display: 'flex', marginLeft: '20%', flexDirection: 'column'}}>
+                        <Weather />
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <Link to={`/gift/add`}>
+                            <Fab color="primary" aria-label="add">
+                                <AddIcon />
+                            </Fab>
+                        </Link>
+                        <Grid>
+                            <Giftlist giftData={giftData} />
+                        </Grid>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 }
+
 export default Gift;
+
+
+
+
