@@ -9,7 +9,7 @@ function Tasklist({taskData}) {
         <Taskcard key={task.id} id={task.id} title={task.title} description={task.description} />)    
     })
     return (
-        <div style={{ display: 'flex', maxHeight: 400, maxWidth: 600, overflow: 'auto', justifyContent: 'right' }}>
+        <div style={{ display: 'flex', maxHeight: 450, maxWidth: 700, overflow: 'auto', justifyContent: 'right' }}>
             <Grid container>
                 {tasks}
             </Grid>

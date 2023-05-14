@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     margin-top: 3%;
 }
 
@@ -33,4 +34,45 @@ h1 {
 
 .dispoMobil {
     color: #9CECFF;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        margin-top: 10%;
+    }
+
+    .lme-logo {
+        width: 20%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .paraEworld {
+        margin: 40px 20px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .lme-logo {
+        width: 30%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .paraEworld {
+        margin: 20px 10px;
+        font-size: 18px;
+    }
+
+    .divbutton {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }

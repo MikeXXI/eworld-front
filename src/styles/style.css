@@ -20,6 +20,7 @@
 .titleSup {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .decription {
@@ -28,6 +29,7 @@
 
 .cardContent {
     background-color: #9CECFF !important;
+    margin-top: 10px;
 }
 
 .buttonsupp{
@@ -36,5 +38,55 @@
     background-color: #111B2E;
     padding: 10px;
     border-radius: 10px;
+    border: none;
 }
 
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    max-width: 90%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h1 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #333333;
+}
+
+.modal-content button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #61dafb;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #43c6db;
+}
+
+.modal-content button + button {
+    margin-left: 8px;
+    background-color: #eeeeee;
+    color: #333333;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button + button:hover {
+    background-color: #cccccc;
+}
