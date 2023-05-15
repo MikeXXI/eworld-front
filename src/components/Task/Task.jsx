@@ -57,7 +57,6 @@ function Task() {
             ) : (
                 <div style={{
                     position: 'fixed',
-                    bottom: 0,
                     left: 0,
                     right: 0,
                     display: 'flex',
@@ -65,7 +64,7 @@ function Task() {
                 }}>
                     <div style={{display: 'flex', flexDirection: 'column', marginLeft: "15%"}}>
                         <Weather/>
-                        <img src={sphere} style={{width: 350, borderRadius: 100, marginTop: "5%"}} alt="imgPersonne"/>
+                        <img src={sphere} style={{width: 300, borderRadius: 100, marginTop: "5%"}} alt="imgPersonne"/>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <div style={{display: "flex", alignItems: "center"}}>
