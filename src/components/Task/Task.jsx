@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom';
 import '../../styles/style.css';
 import CircularProgress from "@mui/material/CircularProgress";
 import CurrentDate from "../CurrentDate";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 function Task() {
     const [taskData, setTaskData] = useState([]);
@@ -34,8 +35,13 @@ function Task() {
                 <h1>Bienvenue,<br/> Marion</h1>
                 <img src={logo} alt='logo e-world'/>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}}>
-                    <img src={person} style={{width: '15%', borderRadius: 100, marginBottom: "10px"}}
+                    <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+                    <img src={person} style={{width: '15%', borderRadius: 100, marginBottom: "10px", marginRight: "10px"}}
                          alt="imgPersonne"/>
+                    <Link to={`/Profil`}>
+                    <SettingsIcon style={{color: "white"}}/>
+                    </Link>
+                    </div>
                     <CurrentDate/>
                     <Link to={`/`}>
                         <Button variant="outlined" size="large" sx={{
