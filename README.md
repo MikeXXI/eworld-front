@@ -1,8 +1,6 @@
 # Pour installer le projet
 
-## `npm install --force`
-
-Le force est nécessaire pour installer les dépendances de manière correcte.
+## `npm install`
 
 ### `npm start`
 
