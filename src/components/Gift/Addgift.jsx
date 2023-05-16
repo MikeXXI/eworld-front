@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
+import { toast } from 'react-toastify';
 
 
 const Addgift = () => {
@@ -29,6 +30,9 @@ const Addgift = () => {
         })
             .then(response => response.json())
             .then(jsonData => console.log(jsonData))
+            .then(jsonData => {
+                toast.success('Cadeau crée avec succès');
+            })
             .catch(error => console.error(error));
             navigate('/gift');
     };

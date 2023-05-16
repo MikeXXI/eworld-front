@@ -1,12 +1,12 @@
-// import React from "react";
-// import LoginForm from "./formconnexion";
+ import React from "react";
+ import UserLogin from "./Form/formconnexion";
 
-// const Loginpage = () => {
-//     return (
-//         <div>
-//             <LoginForm />
-//         </div>
-//     );
-// };
+ const Loginpage = () => {
+     return (
+         <div>
+             <UserLogin />
+         </div>
+     );
+ };
 
-// export default Loginpage;
+ export default Loginpage;

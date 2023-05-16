@@ -58,7 +58,10 @@ class Weather extends Component {
         <p style={{ margin: '4px' }}>{windIcon} {windSpeed} m/s</p>
         <p style={{ margin: '4px' }}>{humidityIcon} {humidity}%</p>
         </div>
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <p style={{fontSize: "25px", margin: "0"}}>Nice</p>
         <p style={{fontSize: 40, fontWeight: 'bold', margin: '0'}}>{temperature}°C</p>
+        </div>
       </div>
     );
   }

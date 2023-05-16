@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate} from "react-router";
 import logo from '../../assets/logoeworld.png'
+import { toast } from 'react-toastify';
 
 const Addtask = () => {
     const [title, setTitle] = useState('');
@@ -27,9 +28,11 @@ const Addtask = () => {
         })
             .then(response => response.json())
             .then(jsonData => console.log(jsonData))
+            .then(jsonData => {
+                toast.success('Tâche créée avec succès');
+            })
             .catch(error => console.error(error));
-
-            navigate('/task');
+             navigate('/task');
     };
 
     return (

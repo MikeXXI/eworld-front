@@ -11,6 +11,8 @@ import '../../styles/style.css';
 import CircularProgress from "@mui/material/CircularProgress";
 import CurrentDate from "../CurrentDate";
 import SettingsIcon from '@mui/icons-material/Settings';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function Task() {
     const [taskData, setTaskData] = useState([]);
@@ -31,6 +33,7 @@ function Task() {
 
     return (
         <div>
+            <ToastContainer/>
             <div className="divHeader">
                 <h1>Bienvenue,<br/> Marion</h1>
                 <img src={logo} alt='logo e-world'/>

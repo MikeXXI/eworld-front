@@ -11,6 +11,8 @@ import CurrentDate from "../CurrentDate";
 import Giftlist from './Giftlist';
 import sphere from "../../assets/sphère3d.png";
 import SettingsIcon from "@mui/icons-material/Settings";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function Gift() {
     const [giftData, setGiftData] = useState([]);
@@ -31,6 +33,7 @@ function Gift() {
 
     return (
         <div>
+            <ToastContainer/>
             <div className="divHeader">
                 <h1>Bienvenue,<br/> Marion</h1>
                 <img src={logo} alt='logo e-world'/>
