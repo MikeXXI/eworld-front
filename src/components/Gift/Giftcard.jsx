@@ -49,7 +49,7 @@ function Giftcard({ id, name, adress, price, description }) {
             <Card className="cardContent">
                 <CardContent>
                     <div className="titleSup">
-                        <img src={person} style={{ width: '10%', borderRadius: 100 }} alt="imgPersonne" />
+                        <img src={person} style={{ width: '10%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
                         <p style={{ fontSize: "20px", fontWeight: "bold" }}>{name}</p>
                         <button className="buttonsupp" onClick={handleOpen}>
                             <DeleteIcon />

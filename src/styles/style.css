@@ -1,8 +1,4 @@
-/* List Tasks */
-.logoeworld {
-    width: 10%;
-    margin: 20px 40px;
-}
+/* Page Task & Gifts */
 
 .divHeader {
     margin: 20px 40px;
@@ -12,14 +8,12 @@
     justify-content: space-between;
 }
 
-.divHeader img {
+.logoeworld {
     width: 15%;
+    margin: 20px 40px;
 }
 
-.h4 {
-    text-transform: uppercase;
-    font-weight: 900;
-}
+/* Card Task & Gifts */
 
 .titleSup {
     display: flex;
@@ -36,7 +30,7 @@
     margin-top: 10px;
 }
 
-.buttonsupp{
+.buttonsupp {
     color: #9CECFF;
     text-decoration: none;
     background-color: #111B2E;
@@ -44,6 +38,8 @@
     border-radius: 10px;
     border: none;
 }
+
+/* MODAL DELETE & ADD */
 
 .modal-content {
     position: fixed;
@@ -94,3 +90,56 @@
 .modal-content button + button:hover {
     background-color: #cccccc;
 }
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 768px) {
+
+    .divHeader {
+        justify-content: center;
+    }
+
+    .divHeader h1{
+        display: none;
+    }
+
+    .divHeader .headerProfil{
+        display: none !important;
+    }
+
+    .logoeworld {
+        width: 40%;
+        margin: 10px 0;
+    }
+
+    .container_weather_taskgift {
+        position: initial !important;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .weather_sphere {
+        width: 70%;
+        margin: 0 !important;
+        align-items: center;
+    }
+
+    .weather_sphere img {
+        width: 100% !important;
+    }
+
+    .container_task_gift{
+        width: 100% !important;
+    }
+
+    .container_add {
+        width: 100% !important;
+    }
+
+    .container_add p {
+        font-size: initial !important;
+    }
+}
+
+
+

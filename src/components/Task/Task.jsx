@@ -12,7 +12,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import CurrentDate from "../CurrentDate";
 import SettingsIcon from '@mui/icons-material/Settings';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 
 function Task() {
     const [taskData, setTaskData] = useState([]);
@@ -36,14 +36,16 @@ function Task() {
             <ToastContainer/>
             <div className="divHeader">
                 <h1>Bienvenue,<br/> Marion</h1>
-                <img src={logo} alt='logo e-world'/>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}}>
-                    <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
-                    <img src={person} style={{width: '15%', borderRadius: 100, marginBottom: "10px", marginRight: "10px"}}
-                         alt="imgPersonne"/>
-                    <Link to={`/Profil`}>
-                    <SettingsIcon style={{color: "white"}}/>
-                    </Link>
+                <img src={logo} alt='logo e-world' className="logoeworld"/>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}} className="headerProfil">
+                    <div
+                        style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+                        <img src={person}
+                             style={{width: '15%', borderRadius: 100, marginBottom: "10px", marginRight: "10px"}}
+                             alt="imgPersonne"/>
+                        <Link to={`/Profil`}>
+                            <SettingsIcon style={{color: "white"}}/>
+                        </Link>
                     </div>
                     <CurrentDate/>
                     <Link to={`/`}>
@@ -68,25 +70,40 @@ function Task() {
                     position: 'fixed',
                     left: 0,
                     right: 0,
+                    bottom: 0,
                     display: 'flex',
                     justifyContent: 'space-between'
-                }}>
-                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: "15%"}}>
+                }}
+                     className="container_weather_taskgift">
+                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: "15%"}}
+                         className="weather_sphere">
                         <Weather/>
-                        <img src={sphere} style={{width: 300, borderRadius: 100, marginTop: "5%"}} alt="imgPersonne"/>
+                        <img src={sphere} style={{width: "20vw", borderRadius: 100, marginTop: "50px"}}
+                             alt="imgPersonne"/>
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                    <div style={{display: 'flex', flexDirection: 'column'}} className="container_task_gift">
+                        <div style={{display: "flex", alignItems: "center"}} className="container_add">
                             <Link to={`/task/add`}>
                                 <Fab color="primary" aria-label="add">
                                     <AddIcon/>
                                 </Fab>
                             </Link>
-                            <Link to={`/task`} style={{marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white"}}>
-                                <p style={{fontSize: "40px", margin: "20px", color: "white", fontWeight: "100"}}>({taskCount}) Tâches</p>
+                            <Link to={`/task`}
+                                  style={{marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white"}}>
+                                <p style={{
+                                    fontSize: "40px",
+                                    margin: "20px",
+                                    color: "white",
+                                    fontWeight: "100"
+                                }}>({taskCount}) Tâches</p>
                             </Link>
                             <Link to={`/gift`} style={{marginLeft: "50px", textDecoration: "none"}}>
-                                <p style={{fontSize: "40px", margin: "20px", color: "white", fontWeight: "100"}}>Cadeaux</p>
+                                <p style={{
+                                    fontSize: "40px",
+                                    margin: "20px",
+                                    color: "white",
+                                    fontWeight: "100"
+                                }}>Cadeaux</p>
                             </Link>
                         </div>
                         <Grid>

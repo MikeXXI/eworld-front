@@ -49,7 +49,7 @@ function Taskcard({ id, title, description }) {
                 <CardContent>
                     <div className="titleSup">
                         <div style={{ margin: 0, display: "flex", alignItems: "center", textTransform: "uppercase", fontWeight: "900"}}>
-                            <img src={person} style={{ width: '10%', borderRadius: 100 }} alt="imgPersonne" />
+                            <img src={person} style={{ width: '10%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
                             {title}
                         </div>
                         <button className="buttonsupp" onClick={modalOpen}>
