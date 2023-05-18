@@ -101,8 +101,7 @@ function Task() {
                     <div style={{display: 'flex', flexDirection: 'column', marginLeft: "15%"}}
                          className="weather_sphere">
                         <Weather/>
-                        <img src={sphere} style={{width: "20vw", borderRadius: 100, marginTop: "50px"}}
-                             alt="imgPersonne"/>
+                        <img src={sphere} style={{width: "20vw", borderRadius: 100, marginTop: "50px"}} alt="sphere"/>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}} className="container_task_gift">
                         <div style={{display: "flex", alignItems: "center"}} className="container_add">

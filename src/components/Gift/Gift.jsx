@@ -97,10 +97,10 @@ function Gift() {
                     justifyContent: 'space-between'
                 }}
                      className="container_weather_taskgift">
-                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: "10%"}}
+                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: "15%"}}
                          className="weather_sphere">
                         <Weather/>
-                        <img src={sphere} style={{width: 300, borderRadius: 100, marginTop: "5%"}} alt="imgPersonne"/>
+                        <img src={sphere} style={{width: "20vw", borderRadius: 100, marginTop: "50px"}} alt="sphere"/>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}} className="container_task_gift">
                         <div style={{display: "flex", alignItems: "center"}} className="container_add">
