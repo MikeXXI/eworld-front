@@ -37,7 +37,7 @@ function Gift() {
         setOpenModal(true);
     };
 
-    const handleCloseModal = () => {
+    const handleCloseModalGifts = () => {
         setOpenModal(false);
     };
 
@@ -132,9 +132,9 @@ function Gift() {
                 </div>
             )}
 
-            <Dialog open={openModal} onClose={handleCloseModal}>
+            <Dialog open={openModal} onClose={handleCloseModalGifts}>
                 <DialogContent style={{ background: "#9CECFF", borderRadius: "20px" }}>
-                    <Addgift onCloseModal={handleCloseModal} onAddTask={handleAddGift} />
+                    <Addgift onCloseModal={handleCloseModalGifts} onAddGift={handleAddGift} />
                 </DialogContent>
             </Dialog>
         </div>
