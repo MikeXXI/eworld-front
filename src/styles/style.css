@@ -48,7 +48,7 @@
     transform: translate(-50%, -50%);
     width: 300px;
     max-width: 90%;
-    background-color: #ffffff;
+    background: #9CECFF;
     border-radius: 8px;
     padding: 16px;
     display: flex;
@@ -61,7 +61,8 @@
 .modal-content h1 {
     font-size: 20px;
     margin-bottom: 16px;
-    color: #333333;
+    color: #111B2E;
+    text-align: center;
 }
 
 .modal-content button {
@@ -69,7 +70,7 @@
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 14px;
-    background-color: #61dafb;
+    background-color: #111B2E;
     color: #ffffff;
     border: none;
     cursor: pointer;

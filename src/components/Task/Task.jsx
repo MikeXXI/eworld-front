@@ -1,22 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {Box, Grid, Fab, Button} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Grid, Fab, Button, Dialog, DialogContent } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Tasklist from './Tasklist';
 import Weather from '../Weather';
 import logo from "../../assets/logoeworld.png";
 import person from "../../assets/logosneakbyyan.png";
 import sphere from "../../assets/sphère3d.png";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../styles/style.css';
 import CircularProgress from "@mui/material/CircularProgress";
 import CurrentDate from "../CurrentDate";
 import SettingsIcon from '@mui/icons-material/Settings';
 import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import Addtask from '../Task/Addtask';
 
 function Task() {
     const [taskData, setTaskData] = useState([]);
     const [load, isLoad] = useState(true);
+    const [openModal, setOpenModal] = useState(false); // État pour contrôler l'ouverture/fermeture de la modal
 
     useEffect(function () {
         isLoad(true);
@@ -27,9 +29,30 @@ function Task() {
                 setTaskData(data);
                 console.log(data);
             });
+
     }, []);
 
     const taskCount = taskData.length;
+
+    const handleOpenModal = () => {
+        setOpenModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+    };
+
+    const handleAddTask = () => {
+        fetch("https://eworld-api.osc-fr1.scalingo.io/api/tasks")
+            .then((res) => res.json())
+            .then((data) => {
+                setTaskData(data);
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     return (
         <div>
@@ -83,11 +106,9 @@ function Task() {
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}} className="container_task_gift">
                         <div style={{display: "flex", alignItems: "center"}} className="container_add">
-                            <Link to={`/task/add`}>
-                                <Fab color="primary" aria-label="add">
-                                    <AddIcon/>
-                                </Fab>
-                            </Link>
+                            <Fab color="primary" aria-label="add" onClick={handleOpenModal}>
+                                <AddIcon/>
+                            </Fab>
                             <Link to={`/task`}
                                   style={{marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white"}}>
                                 <p style={{
@@ -112,6 +133,13 @@ function Task() {
                     </div>
                 </div>
             )}
+
+            {/* Modal */}
+            <Dialog open={openModal} onClose={handleCloseModal}>
+                <DialogContent style={{ background: "#9CECFF", borderRadius: "20px" }}>
+                    <Addtask onCloseModal={handleCloseModal} onAddTask={handleAddTask} />
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

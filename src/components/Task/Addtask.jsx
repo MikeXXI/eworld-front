@@ -1,24 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate} from "react-router";
-import logo from '../../assets/logoeworld.png'
 import { toast } from 'react-toastify';
 
-const Addtask = () => {
+const Addtask = ({ onCloseModal, onAddTask }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const navigate = useNavigate();
-    const user_id = "/api/users/1"
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = {
             title: title,
             description: description,
-            userId: user_id
+            userId: "/api/users/1"
         }
         const jsonData = JSON.stringify(data);
-
-
         fetch('https://eworld-api.osc-fr1.scalingo.io/api/tasks', {
             method: 'POST',
             headers: {
@@ -27,27 +21,26 @@ const Addtask = () => {
             body: jsonData
         })
             .then(response => response.json())
-            .then(jsonData => console.log(jsonData))
             .then(jsonData => {
                 toast.success('Tâche créée avec succès');
+                onAddTask(); // Appeler la fonction onAddTask pour mettre à jour la liste des tâches
+                onCloseModal(); // Fermer la modal
             })
             .catch(error => console.error(error));
-             navigate('/task');
     };
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <img src={logo} alt='logo e-world' style={{width: "30%"}}/>
-                <h1 style={{ color: "#5E8CFF", fontWeight: 500, fontSize: "4rem", marginTop: "2rem", marginBottom: "2rem"}}>Ajout d'une tache</h1>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <h1 style={{ color: "#111B2E", fontWeight: 500, fontSize: "2rem", marginTop: "2rem", marginBottom: "2rem" }}>Ajout d'une tâche</h1>
                 <div>
-                    <input placeholder={"Titre"} type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: "100%", padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
+                    <input placeholder={"Titre"} type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} style={{padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px" }} />
                 </div>
                 <div>
-                    <input placeholder={"Description"} type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ width: "100%",padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
+                    <input placeholder={"Description"} type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px" }} />
                 </div>
 
-                <button type="submit" style={{ backgroundColor: '#5E8CFF', border: "none", borderRadius: '20px', padding: "15px", '&:hover': {backgroundColor: '#111B2E', color: '#5E8CFF', border: "solid 3px #5E8CFF",},}}>Ajouter une tâche</button>
+                <button type="submit" style={{ backgroundColor: '#111B2E', color: "white", border: "none", borderRadius: '20px', padding: "15px", cursor: "pointer" }}>Ajouter une tâche</button>
             </form>
         </div>
     );

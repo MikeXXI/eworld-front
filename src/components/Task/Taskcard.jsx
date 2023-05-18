@@ -16,7 +16,6 @@ function Taskcard({ id, title, description }) {
         })
             .then(response => {
                 if (response.ok) {
-                    console.log("Task deleted successfully");
                     handleClose();
                     window.location.reload(); // Refresh the page
                 } else {
@@ -24,7 +23,6 @@ function Taskcard({ id, title, description }) {
                 }
             })
             .catch(error => {
-                console.log(error);
                 alert('Erreur lors de la suppression de la tâche');
             });
     };

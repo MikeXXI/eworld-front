@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Grid, Fab, Button} from '@mui/material';
+import {Box, Grid, Fab, Button, DialogContent, Dialog} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Weather from '../Weather';
 import logo from "../../assets/logoeworld.png";
@@ -13,10 +13,12 @@ import sphere from "../../assets/sphère3d.png";
 import SettingsIcon from "@mui/icons-material/Settings";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify';
+import Addgift from "../Gift/Addgift";
 
 function Gift() {
     const [giftData, setGiftData] = useState([]);
     const [load, isLoad] = useState(true);
+    const [openModal, setOpenModal] = useState(false); // État pour contrôler l'ouverture/fermeture de la modal
 
     useEffect(function () {
         isLoad(true);
@@ -30,6 +32,26 @@ function Gift() {
     }, []);
 
     const giftCount = giftData.length;
+
+    const handleOpenModalgift = () => {
+        setOpenModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+    };
+
+    const handleAddGift = () => {
+        fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")
+            .then((res) => res.json())
+            .then((data) => {
+                setGiftData(data);
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     return (
         <div>
@@ -82,11 +104,9 @@ function Gift() {
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}} className="container_task_gift">
                         <div style={{display: "flex", alignItems: "center"}} className="container_add">
-                            <Link to={`/gift/add`}>
-                                <Fab color="primary" aria-label="add">
+                                <Fab color="primary" aria-label="add" onClick={handleOpenModalgift}>
                                     <AddIcon/>
                                 </Fab>
-                            </Link>
                             <Link to={`/task`} style={{marginLeft: "50px", textDecoration: "none"}}>
                                 <p style={{
                                     fontSize: "40px",
@@ -111,6 +131,12 @@ function Gift() {
                     </div>
                 </div>
             )}
+
+            <Dialog open={openModal} onClose={handleCloseModal}>
+                <DialogContent style={{ background: "#9CECFF", borderRadius: "20px" }}>
+                    <Addgift onCloseModal={handleCloseModal} onAddTask={handleAddGift} />
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
