@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {Box, Grid, Fab, Button, DialogContent, Dialog} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Grid, Fab, Button, Dialog, DialogContent } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Weather from '../Weather';
 import logo from "../../assets/logoeworld.png";
 import person from "../../assets/logosneakbyyan.png";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../styles/style.css';
 import CircularProgress from "@mui/material/CircularProgress";
 import CurrentDate from "../CurrentDate";
@@ -12,45 +12,43 @@ import Giftlist from './Giftlist';
 import sphere from "../../assets/sphère3d.png";
 import SettingsIcon from "@mui/icons-material/Settings";
 import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import Addgift from "../Gift/Addgift";
 
 function Gift() {
     const [giftData, setGiftData] = useState([]);
-    const [load, isLoad] = useState(true);
-    const [openModal, setOpenModal] = useState(false); // État pour contrôler l'ouverture/fermeture de la modal
+    const [loading, setLoading] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
 
-    useEffect(function () {
-        isLoad(true);
-        fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")
-            .then((res) => res.json())
-            .then((data) => {
-                isLoad(false);
-                setGiftData(data);
-                console.log(data);
-            });
-    }, []);
-
-    const giftCount = giftData.length;
-
-    const handleOpenModalgift = () => {
-        setOpenModal(true);
-    };
-
-    const handleCloseModalGifts = () => {
-        setOpenModal(false);
-    };
-
-    const handleAddGift = () => {
+    const fetchData = () => {
+        setLoading(true);
         fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")
             .then((res) => res.json())
             .then((data) => {
                 setGiftData(data);
+                setLoading(false);
                 console.log(data);
             })
             .catch((error) => {
                 console.error(error);
+                setLoading(false);
             });
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const handleOpenModal = () => {
+        setOpenModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+    };
+
+    const handleAddGift = () => {
+        fetchData();
     };
 
     return (
@@ -81,7 +79,7 @@ function Gift() {
                     </Link>
                 </div>
             </div>
-            {load ? (
+            {loading ? (
                 <Grid>
                     <Box sx={{display: "flex"}}>
                         <CircularProgress/>
@@ -104,9 +102,9 @@ function Gift() {
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}} className="container_task_gift">
                         <div style={{display: "flex", alignItems: "center"}} className="container_add">
-                                <Fab color="primary" aria-label="add" onClick={handleOpenModalgift}>
-                                    <AddIcon/>
-                                </Fab>
+                            <Fab color="primary" aria-label="add" onClick={handleOpenModal}>
+                                <AddIcon/>
+                            </Fab>
                             <Link to={`/task`} style={{marginLeft: "50px", textDecoration: "none"}}>
                                 <p style={{
                                     fontSize: "40px",
@@ -122,7 +120,7 @@ function Gift() {
                                     margin: "20px",
                                     color: "white",
                                     fontWeight: "100"
-                                }}>({giftCount}) Cadeaux</p>
+                                }}>({giftData.length}) Cadeaux</p>
                             </Link>
                         </div>
                         <Grid>
@@ -132,9 +130,9 @@ function Gift() {
                 </div>
             )}
 
-            <Dialog open={openModal} onClose={handleCloseModalGifts}>
+            <Dialog open={openModal} onClose={handleCloseModal}>
                 <DialogContent style={{ background: "#9CECFF", borderRadius: "20px" }}>
-                    <Addgift onCloseModal={handleCloseModalGifts} onAddGift={handleAddGift} />
+                    <Addgift onCloseModal={handleCloseModal} onAddGift={handleAddGift} />
                 </DialogContent>
             </Dialog>
         </div>

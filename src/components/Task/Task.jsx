@@ -17,22 +17,27 @@ import Addtask from '../Task/Addtask';
 
 function Task() {
     const [taskData, setTaskData] = useState([]);
-    const [load, isLoad] = useState(true);
-    const [openModal, setOpenModal] = useState(false); // État pour contrôler l'ouverture/fermeture de la modal
+    const [loading, setLoading] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
 
-    useEffect(function () {
-        isLoad(true);
+    const fetchData = () => {
+        setLoading(true);
         fetch("https://eworld-api.osc-fr1.scalingo.io/api/tasks")
             .then((res) => res.json())
             .then((data) => {
-                isLoad(false);
                 setTaskData(data);
+                setLoading(false);
                 console.log(data);
+            })
+            .catch((error) => {
+                console.error(error);
+                setLoading(false);
             });
+    };
 
+    useEffect(() => {
+        fetchData();
     }, []);
-
-    const taskCount = taskData.length;
 
     const handleOpenModal = () => {
         setOpenModal(true);
@@ -43,15 +48,7 @@ function Task() {
     };
 
     const handleAddTask = () => {
-        fetch("https://eworld-api.osc-fr1.scalingo.io/api/tasks")
-            .then((res) => res.json())
-            .then((data) => {
-                setTaskData(data);
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        fetchData();
     };
 
     return (
@@ -82,7 +79,7 @@ function Task() {
                     </Link>
                 </div>
             </div>
-            {load ? (
+            {loading ? (
                 <Grid>
                     <Box sx={{display: "flex"}}>
                         <CircularProgress/>
@@ -115,7 +112,7 @@ function Task() {
                                     margin: "20px",
                                     color: "white",
                                     fontWeight: "100"
-                                }}>({taskCount}) Tâches</p>
+                                }}>({taskData.length}) Tâches</p>
                             </Link>
                             <Link to={`/gift`} style={{marginLeft: "50px", textDecoration: "none"}}>
                                 <p style={{
