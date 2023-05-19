@@ -3,11 +3,14 @@ import { Grid } from "@mui/material";
 import Giftcard from "./Giftcard";
 
 function Giftlist({giftData}) {
+    // const user_id = localStorage.getItem('user_id');
+    const user_id = "/api/users/1";
     const gifts = [];
 
     if (Array.isArray(giftData)) {
         giftData.forEach((gift) => {
-            gifts.push(
+            if (gift.userId === user_id){
+            gifts.push(                
                 <Giftcard
                     key={gift.id}
                     id={gift.id}
@@ -16,7 +19,7 @@ function Giftlist({giftData}) {
                     price={gift.price}
                     description={gift.description}
                 />
-            );
+            );}
         });
     }
     return (
