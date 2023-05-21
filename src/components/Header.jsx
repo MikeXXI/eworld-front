@@ -23,6 +23,9 @@ function Header() {
             <h1>Bienvenue,<br/> {username}</h1>
             <Link to={`/task`} style={{display: "flex", justifyContent: "center"}}>
             <img src={logo} alt='logo e-world' className="logoeworldtask"/>
+                <Link to={`/Profil`} style={{display:"none"}} className="settingsmobil">
+                    <SettingsIcon style={{color: "white"}}/>
+                </Link>
             </Link>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}} className="headerProfil">
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
