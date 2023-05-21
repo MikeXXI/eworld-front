@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 function Dashboard() {
     const [users, setUsers] = useState([]);
+    
+    if (localStorage.getItem('user_id') === null) {
+        window.location.href = '/connexion';
+    }
 
     useEffect(() => {
         fetch('https://eworld-api.osc-fr1.scalingo.io/api/users')
