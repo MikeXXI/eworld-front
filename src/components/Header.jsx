@@ -22,7 +22,7 @@ function Header() {
         <div className="divHeader">
             <h1>Bienvenue,<br/> {username}</h1>
             <Link to={`/task`} style={{display: "flex", justifyContent: "center"}}>
-            <img src={logo} alt='logo e-world' className="logoeworld"/>
+            <img src={logo} alt='logo e-world' className="logoeworldtask"/>
             </Link>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}} className="headerProfil">
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../assets/logoeworld.png";
 import person from "../assets/logosneakbyyan.png";
+import {Link} from "react-router-dom";
 
 
 class ProfilePage extends React.Component {
@@ -21,7 +22,9 @@ class ProfilePage extends React.Component {
                 justifyContent: "center",
                 alignItems: "center",
             }}>
-                <img src={logo} alt='logo e-world' style={{width: 100, marginBottom: "5%"}}/>
+                <Link to={`/task`} style={{display: "flex", justifyContent: "center", margin: "3%"}}>
+                <img src={logo} alt='logo e-world' className="logoeworldtask"/>
+                </Link>
                 <img src={person} style={{width: '10%', borderRadius: 100, marginBottom: "10px", marginRight: "10px"}}
                      alt="imgPersonne"/>
                 <div style={{display: "flex", flexDirection: "row"}}>

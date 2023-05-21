@@ -9,9 +9,15 @@
 }
 
 .logoeworld {
+    width: 15%;
+    margin: 20px 40px;
+}
+
+.logoeworldtask {
     width: 25%;
     margin: 20px 40px;
 }
+
 /* Card Task & Gifts */
 
 .titleSup {
