@@ -21,7 +21,9 @@ function Header() {
     return (
         <div className="divHeader">
             <h1>Bienvenue,<br/> {username}</h1>
+            <Link to={`/task`} style={{display: "flex", justifyContent: "center"}}>
             <img src={logo} alt='logo e-world' className="logoeworld"/>
+            </Link>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}} className="headerProfil">
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
                     <img src={person} style={{width: '15%', borderRadius: 100, marginBottom: "10px", marginRight: "10px"}} alt="imgPersonne"/>
