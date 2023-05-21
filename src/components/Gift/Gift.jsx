@@ -24,7 +24,6 @@ function Gift() {
             .then((data) => {
                 setGiftData(data);
                 setLoading(false);
-                console.log(data);
             })
             .catch((error) => {
                 console.error(error);
@@ -48,6 +47,8 @@ function Gift() {
         fetchData();
     };
 
+    const reversedGiftData = [...giftData].reverse();
+
     return (
         <div>
             <ToastContainer/>
@@ -59,7 +60,7 @@ function Gift() {
                     </Box>
                 </Grid>
             ) : (
-                <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, display: 'flex', justifyContent: 'space-between' }} className="container_weather_taskgift">
+                <div style={{ display: 'flex', justifyContent: 'space-between' }} className="container_weather_taskgift">
                     <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%" }} className="weather_sphere">
                         <Weather/>
                         <img src={sphere} style={{ width: "20vw", borderRadius: 100, marginTop: "50px" }} alt="sphere"/>
@@ -77,7 +78,7 @@ function Gift() {
                             </Link>
                         </div>
                         <Grid>
-                            <Giftlist giftData={giftData}/>
+                            <Giftlist giftData={reversedGiftData}/>
                         </Grid>
                     </div>
                 </div>
