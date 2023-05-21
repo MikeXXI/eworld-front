@@ -31,14 +31,13 @@ function UserRegistration() {
             });
 
             if (response.ok) {
-                const responseData = await response.json();
-                const user_id = responseData.user_id;
-                const user_name = responseData.username; // Utilisez le champ "username" de la réponse JSON
-                console.log('Connexion réussie ! User ID:', user_id);
-                localStorage.setItem('user_id', user_id);
-                localStorage.setItem('username', user_name); // Stockez le nom d'utilisateur avec la clé "username"
-                // Rediriger vers la page des tâches
-                window.location.href = '/task';
+                response.json().then((data) => {
+                    localStorage.setItem('user_id', data.id);
+                    localStorage.setItem('username', data.username);
+                    localStorage.setItem('roles', data.roles[0]);
+                    console.log('Connexion réussie !');
+                    window.location.href = '/task';
+                }); 
             } else {
                 // Une erreur s'est produite lors de l'inscription
                 const errorData = await response.json();
