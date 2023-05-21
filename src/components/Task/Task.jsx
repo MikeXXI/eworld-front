@@ -22,8 +22,7 @@ function Task() {
         fetch("https://eworld-api.osc-fr1.scalingo.io/api/tasks")
             .then((res) => res.json())
             .then((data) => {
-                const uniqueData = Array.from(new Set(data));
-                setTaskData(uniqueData);
+                setTaskData(data);
                 setLoading(false);
             })
             .catch((error) => {
