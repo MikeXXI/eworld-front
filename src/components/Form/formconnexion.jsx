@@ -30,7 +30,8 @@ function UserLogin() {
                     localStorage.setItem('user_id', data.id);
                     localStorage.setItem('username', data.username);
                     localStorage.setItem('roles', data.roles[0]);
-                    localStorage.setItem('imageUrl', data.imageUrl); 
+                    localStorage.setItem('imageUrl', data.imageUrl);
+                    localStorage.setItem('email', data.email);
                     console.log('Connexion réussie !');
                     window.location.href = '/task';
                 });           

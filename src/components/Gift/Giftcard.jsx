@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -6,10 +6,15 @@ import Typography from '@mui/material/Typography';
 import { Grid, Modal, Button } from "@mui/material";
 import '../../styles/style.css';
 import DeleteIcon from "@mui/icons-material/Delete";
-import person from "../../assets/logosneakbyyan.png";
 
 function Giftcard({ id, name, adress, price, description }) {
     const [open, setOpen] = useState(false);
+    const [imageUrl, setImageUrl] = useState('');
+
+    useEffect(() => {
+        const storedImageUrl = localStorage.getItem('imageUrl');
+        setImageUrl(storedImageUrl);
+    }, []);
 
     const handleSubmit = (giftId) => {
         fetch(`https://eworld-api.osc-fr1.scalingo.io/api/gifts/${giftId}`, {
@@ -49,7 +54,9 @@ function Giftcard({ id, name, adress, price, description }) {
             <Card className="cardContent">
                 <CardContent>
                     <div className="titleSup">
-                        <img src={person} style={{ width: '10%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
+                        {imageUrl && (
+                            <img src={imageUrl} style={{ width: '8%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
+                        )}
                         <p style={{ fontSize: "20px", fontWeight: "bold" }}>{name}</p>
                         <button className="buttonsupp" onClick={handleOpen}>
                             <DeleteIcon />
