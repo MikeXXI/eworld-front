@@ -7,6 +7,7 @@ const Addgift = ({ onCloseModal, onAddGift }) => {
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const user_id = localStorage.getItem('user_id');
+    const userId = String("/api/users/"+user_id);
 
     const handleAddGift = (event) => {
         event.preventDefault();
@@ -15,7 +16,7 @@ const Addgift = ({ onCloseModal, onAddGift }) => {
             adress: adress,
             price: parseInt(price),
             description: description,
-            userId: user_id
+            userId: userId
         }
         const jsonData = JSON.stringify(data);
         fetch('https://eworld-api.osc-fr1.scalingo.io/api/gifts', {

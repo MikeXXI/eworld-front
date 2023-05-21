@@ -4,15 +4,15 @@ import Taskcard from "./Taskcard";
 
 function Tasklist({taskData}) {
 
-    const user_id = localStorage.getItem('user_id');
-    const userIdNumber = user_id ? user_id.split('/').pop() : null; // Extraire le nombre de l'ID de l'utilisateur
+    const user_id = localStorage.getItem('user_id'); 
+    const userId = String("/api/users/"+user_id);  
 
     const tasks = [];
 
     if (Array.isArray(taskData)) {
         taskData.forEach((task) => {
-            const taskUserId = task.userId ? task.userId.split('/').pop() : null; // Extraire le nombre de l'ID de l'utilisateur de la tâche
-            if (taskUserId === userIdNumber) {
+            
+            if (task.userId === userId) {
                 tasks.push(
                     <Taskcard
                         key={task.id}
@@ -24,6 +24,8 @@ function Tasklist({taskData}) {
             }
         });
     }
+    const nbTask = tasks.length;
+    localStorage.setItem('nbTask', nbTask);
 
     return (
         <div style={{display: 'flex', maxHeight: 450, maxWidth: 700, overflow: 'auto', justifyContent: 'right'}}>

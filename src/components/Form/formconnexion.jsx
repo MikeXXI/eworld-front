@@ -26,17 +26,13 @@ function UserLogin() {
             });
 
             if (response.ok) {
-                // La connexion utilisateur est réussie
-                const responseData = await response.json();
-                const user_id = responseData.user_id; // Assurez-vous que votre API renvoie l'ID de l'utilisateur dans la réponse
-                const user_name = responseData.username;
-                console.log('Connexion réussie ! User ID:', user_id);
-                localStorage.setItem('user_id', user_id);
-                localStorage.setItem('username', user_name);
                 response.json().then((data) => {
-                    console.log(data);
-                });
-
+                    localStorage.setItem('user_id', data.id);
+                    localStorage.setItem('username', data.username);
+                    localStorage.setItem('roles', data.roles[0]);
+                    console.log('Connexion réussie !');
+                    window.location.href = '/task';
+                });           
             } else {
                 // Une erreur s'est produite lors de la connexion
                 const errorData = await response.json();

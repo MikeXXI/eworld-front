@@ -16,6 +16,7 @@ function Task() {
     const [taskData, setTaskData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
+    const nbTask = localStorage.getItem('nbTask');
 
     const fetchData = () => {
         setLoading(true);
@@ -69,7 +70,7 @@ function Task() {
                                 <AddIcon/>
                             </Fab>
                             <Link to={`/task`} style={{ marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white" }}>
-                                <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>({taskData.length}) Tâches</p>
+                                <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>({nbTask}) Tâches</p>
                             </Link>
                             <Link to={`/gift`} style={{ marginLeft: "50px", textDecoration: "none" }}>
                                 <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>Cadeaux</p>

@@ -5,13 +5,15 @@ const Addtask = ({ onCloseModal, onAddTask }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const user_id = localStorage.getItem('user_id');
+    const userId = String("/api/users/"+user_id);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = {
             title: title,
             description: description,
-            userId: user_id
+            userId: userId
         }
         const jsonData = JSON.stringify(data);
         fetch('https://eworld-api.osc-fr1.scalingo.io/api/tasks', {
