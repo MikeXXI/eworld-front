@@ -4,7 +4,12 @@ function Dashboard() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('https://eworld-api.osc-fr1.scalingo.io/api/users')
+        fetch('https://eworld-api.osc-fr1.scalingo.io/user', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
             .then((res) => res.json())
             .then((data) => {
                 // Convertir les utilisateurs en un tableau
@@ -18,19 +23,19 @@ function Dashboard() {
 
     return (
         <div>
-            <h1>Dashboard</h1>
-            <table>
+            <h1 style={{ textAlign: 'center' }}>Dashboard</h1>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Email</th>
+                    <th style={tableHeaderStyle}>ID</th>
+                    <th style={tableHeaderStyle}>Email</th>
                 </tr>
                 </thead>
                 <tbody>
                 {users.map((user) => (
                     <tr key={user.id}>
-                        <td>{user.id}</td>
-                        <td>{user.email}</td>
+                        <td style={tableCellStyle}>{user.id}</td>
+                        <td style={tableCellStyle}>{user.email}</td>
                     </tr>
                 ))}
                 </tbody>
@@ -38,5 +43,18 @@ function Dashboard() {
         </div>
     );
 }
+
+const tableHeaderStyle = {
+    backgroundColor: '#f2f2f2',
+    padding: '8px',
+    textAlign: 'left',
+
+};
+
+const tableCellStyle = {
+    padding: '8px',
+    border: '1px solid #ddd',
+    color: 'white',
+};
 
 export default Dashboard;

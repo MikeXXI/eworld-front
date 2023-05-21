@@ -145,6 +145,13 @@
     .container_add p {
         font-size: initial !important;
     }
+
+    .settingsmobil{
+        display: initial !important;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 }
 
 
