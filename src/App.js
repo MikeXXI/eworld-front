@@ -6,9 +6,7 @@ import {
 } from "react-router-dom";
 import Home from "./components/Home";
 import Task from './components/Task/Task';
-import Addtask from './components/Task/Addtask';
 import Gift from './components/Gift/Gift';
-import Addgift from './components/Gift/Addgift';
 import ProfilePage from "./components/Profil";
 import Inscriptionpage from "./components/inscriptionpage";
 import Loginpage from "./components/loginpage";
