@@ -3,7 +3,6 @@ import { Grid, Fab, Dialog, DialogContent } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Tasklist from './Tasklist';
 import Weather from '../Weather';
-import sphere from "../../assets/sphère3d.png";
 import { Link } from 'react-router-dom';
 import '../../styles/style.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import Addtask from '../Task/Addtask';
 import Header from '../Header';
 import CircularProgress from "@mui/material/CircularProgress";
+import sphere from "../../assets/sphère3d.png";
 
 function Task() {
     const [taskData, setTaskData] = useState([]);
@@ -24,7 +24,6 @@ function Task() {
             .then((data) => {
                 setTaskData(data);
                 setLoading(false);
-                console.log(data);
             })
             .catch((error) => {
                 console.error(error);
@@ -48,6 +47,8 @@ function Task() {
         fetchData();
     };
 
+    const reversedTaskData = [...taskData].reverse();
+
     return (
         <div>
             <ToastContainer/>
@@ -57,7 +58,7 @@ function Task() {
                     <CircularProgress/>
                 </Grid>
             ) : (
-                <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, display: 'flex', justifyContent: 'space-between' }} className="container_weather_taskgift">
+                <div style={{ display: 'flex', justifyContent: 'space-between' }} className="container_weather_taskgift">
                     <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%" }} className="weather_sphere">
                         <Weather/>
                         <img src={sphere} style={{ width: "20vw", borderRadius: 100, marginTop: "50px" }} alt="sphere"/>
@@ -75,7 +76,7 @@ function Task() {
                             </Link>
                         </div>
                         <Grid>
-                            <Tasklist taskData={taskData}/>
+                            <Tasklist taskData={reversedTaskData}/>
                         </Grid>
                     </div>
                 </div>

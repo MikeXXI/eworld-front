@@ -10,7 +10,7 @@ import Addtask from './components/Task/Addtask';
 import Gift from './components/Gift/Gift';
 import Addgift from './components/Gift/Addgift';
 import ProfilePage from "./components/Profil";
-import Inscriptionpage from "./components/Register";
+import Inscriptionpage from "./components/inscriptionpage";
 import Loginpage from "./components/loginpage";
 
 
