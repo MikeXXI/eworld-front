@@ -9,7 +9,7 @@ function Dashboard() {
     const [userId, setUserId] = useState(null);
 
     const handleSubmit = (userId) => {
-        fetch(`https://eworld-api.osc-fr1.scalingo.io/user/${userId}`, {
+        fetch(`https://eworld-api.osc-fr1.scalingo.io/api/users/${userId}`, {
             method: 'DELETE'
         })
             .then(response => {
