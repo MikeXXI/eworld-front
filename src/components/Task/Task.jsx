@@ -18,6 +18,10 @@ function Task() {
     const [openModal, setOpenModal] = useState(false);
     const nbTask = localStorage.getItem('nbTask');
 
+    if (localStorage.getItem('user_id') === null) {
+        window.location.href = '/connexion';
+    }
+
     const fetchData = () => {
         setLoading(true);
         fetch("https://eworld-api.osc-fr1.scalingo.io/api/tasks")

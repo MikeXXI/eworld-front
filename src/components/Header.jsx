@@ -32,7 +32,7 @@ function Header() {
                     </Link>
                 </div>
                 <CurrentDate/>
-                <Link to={`/`}>
+                <Link to={`/logout`}>
                     <Button variant="outlined" size="large" sx={{
                         backgroundColor: '#5E8CFF',
                         marginTop: "10px",
