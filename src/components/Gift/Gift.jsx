@@ -18,6 +18,10 @@ function Gift() {
     const [openModal, setOpenModal] = useState(false);
     const nbGift = localStorage.getItem('nbGift');
 
+    if (localStorage.getItem('user_id') === null) {
+        window.location.href = '/connexion';
+    }
+
     const fetchData = () => {
         setLoading(true);
         fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")

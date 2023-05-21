@@ -12,7 +12,8 @@ import Addgift from './components/Gift/Addgift';
 import ProfilePage from "./components/Profil";
 import Inscriptionpage from "./components/inscriptionpage";
 import Loginpage from "./components/loginpage";
-import Dashboard from "./components/Dashboard"
+import Dashboard from "./components/Dashboard";
+import Logout from "./components/logout";
 
 
 export default function App() {
@@ -20,14 +21,15 @@ export default function App() {
     createRoutesFromElements(
       <>
         <Route path="/" element={<Home />} />
-        <Route path="/task" element={<Task />}/>
+        <Route path="/task" element={<Task />} />
         <Route path="/task/add" element={<Addtask />} />
         <Route path="/gift" element={<Gift />} />
         <Route path="/gift/add" element={<Addgift />} />
-          <Route path="/Profil" element={<ProfilePage />} />
-          <Route path="/Inscription" element={<Inscriptionpage />} />
-          <Route path="/Connexion" element={<Loginpage />} />
-          <Route path="/Dashboard" element={<Dashboard/>}/>
+        <Route path="/profil" element={<ProfilePage />} />
+        <Route path="/inscription" element={<Inscriptionpage />} />
+        <Route path="/connexion" element={<Loginpage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/logout" element={<Logout />} />
       </>
     )
   );
