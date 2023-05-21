@@ -30,11 +30,13 @@ function UserRegistration() {
                 }),
             });
 
-            if (response.ok) {
+            if (response.ok) {                
+                const data = response.json();
+                console.log(data);
                 // L'utilisateur a été inscrit avec succès
                 console.log('Inscription réussie !');
                 // Rediriger vers la page des tâches
-                window.location.href = '/';
+                window.location.href = '/task';
             } else {
                 // Une erreur s'est produite lors de l'inscription
                 setError('Erreur lors de l\'inscription');
