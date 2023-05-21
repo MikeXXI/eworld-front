@@ -6,6 +6,8 @@ import '../styles/style.css';
 import CurrentDate from "./CurrentDate";
 import SettingsIcon from '@mui/icons-material/Settings';
 import 'react-toastify/dist/ReactToastify.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserFriends} from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
     const [username, setUsername] = useState('');
@@ -15,7 +17,6 @@ function Header() {
         const storedUsername = localStorage.getItem('username');
         const storedImageUrl = localStorage.getItem('imageUrl');
         setImageUrl(storedImageUrl);
-        console.log("image :", storedImageUrl);
         setUsername(storedUsername);
     }, []);
 
@@ -28,18 +29,19 @@ function Header() {
             <Link to={`/Profil`} style={{display: "none"}} className="settingsmobil">
                 <SettingsIcon style={{color: "white"}}/>
             </Link>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}} className="headerProfil">
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: "center", width: "20%"}}
+                 className="headerProfil">
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
                     {imageUrl && (
+                        <Link to={`/Profil`} style={{display: "flex", justifyContent: "center"}}>
                         <img
-                            src={imageUrl}
-                            style={{width: '15%', borderRadius: 100, marginBottom: "10px", marginRight: "10px"}}
-                            alt="imgPersonne"
-                        />
+                                src={imageUrl}
+                                style={{width: '20%', borderRadius: 100, marginBottom: "10px", marginRight: "10px"}}
+                                alt="imgPersonne"
+                            />
+                        </Link>
                     )}
-                    <Link to={`/Profil`}>
-                        <SettingsIcon style={{color: "white"}}/>
-                    </Link>
+                    <FontAwesomeIcon icon={faUserFriends} style={{ color: 'white' , fontSize: "20px"}} />
                 </div>
                 <CurrentDate/>
                 <Link to={`/logout`}>

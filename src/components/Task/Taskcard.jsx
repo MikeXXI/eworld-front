@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Grid, Modal, Button } from "@mui/material";
 import '../../styles/style.css';
 import DeleteIcon from "@mui/icons-material/Delete";
-import person from "../../assets/logosneakbyyan.png";
 
 function Taskcard({ id, title, description }) {
     const [open, setOpen] = useState(false);
+    const [imageUrl, setImageUrl] = useState('');
+
+    useEffect(() => {
+        const storedImageUrl = localStorage.getItem('imageUrl');
+        setImageUrl(storedImageUrl);
+    }, []);
 
     const handleSubmit = (taskId) => {
         fetch(`https://eworld-api.osc-fr1.scalingo.io/api/tasks/${taskId}`, {
@@ -47,7 +52,9 @@ function Taskcard({ id, title, description }) {
                 <CardContent>
                     <div className="titleSup">
                         <div style={{ margin: 0, display: "flex", alignItems: "center", textTransform: "uppercase", fontWeight: "900"}}>
-                            <img src={person} style={{ width: '10%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
+                            {imageUrl && (
+                            <img src={imageUrl} style={{ width: '8%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
+                            )}
                             {title}
                         </div>
                         <button className="buttonsupp" onClick={modalOpen}>

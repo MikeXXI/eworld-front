@@ -18,6 +18,7 @@ function Gift() {
     const [openModal, setOpenModal] = useState(false);
     const nbGift = localStorage.getItem('nbGift');
 
+
     if (localStorage.getItem('user_id') === null) {
         window.location.href = '/connexion';
     }
@@ -54,10 +55,30 @@ function Gift() {
 
     const reversedGiftData = [...giftData].reverse();
 
+    const role = localStorage.getItem('roles');
+
     return (
         <div>
             <ToastContainer/>
             <Header/>
+            {role === 'ADMIN' && (
+                <Link to="/dashboard"
+                      style={{marginLeft: "50px", textDecoration: "none", display: "flex", justifyContent: "center"}}>
+                    <button style={{
+                        borderRadius: 20,
+                        fontSize: "15px",
+                        margin: "20px",
+                        color: "black",
+                        fontWeight: "bold",
+                        cursor: "pointer",
+                        background: "#9CECFF",
+                        padding: "10px",
+                        border: "none",
+                    }}>
+                        Dashboard ADMIN
+                    </button>
+                </Link>
+            )}
             {loading ? (
                 <Grid>
                     <Box sx={{display: "flex"}}>
