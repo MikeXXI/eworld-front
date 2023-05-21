@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button} from '@mui/material';
 import logo from "../assets/logoeworld.png";
 import person from "../assets/logosneakbyyan.png";
@@ -9,9 +9,18 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Header() {
+
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        setUsername(storedUsername);
+        console.log('Name :', storedUsername);
+    }, []);
+
     return (
         <div className="divHeader">
-            <h1>Bienvenue,<br/> Marion</h1>
+            <h1>Bienvenue,<br/> {username}</h1>
             <img src={logo} alt='logo e-world' className="logoeworld"/>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}} className="headerProfil">
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>

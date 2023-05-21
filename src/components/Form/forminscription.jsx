@@ -18,7 +18,7 @@ function UserRegistration() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://eworld-api.osc-fr1.scalingo.io/register', {
+            const response = await fetch('https://eworld-api.osc-fr1.scalingo.io/user/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,24 +26,27 @@ function UserRegistration() {
                 body: JSON.stringify({
                     email,
                     password,
-                    username
+                    username,
                 }),
             });
 
-            if (response.ok) {                
-                const data = response.json();
-                console.log(data);
-                // L'utilisateur a été inscrit avec succès
-                console.log('Inscription réussie !');
+            if (response.ok) {
+                const responseData = await response.json();
+                const user_id = responseData.user_id;
+                const user_name = responseData.username; // Utilisez le champ "username" de la réponse JSON
+                console.log('Connexion réussie ! User ID:', user_id);
+                localStorage.setItem('user_id', user_id);
+                localStorage.setItem('username', user_name); // Stockez le nom d'utilisateur avec la clé "username"
                 // Rediriger vers la page des tâches
                 window.location.href = '/task';
             } else {
                 // Une erreur s'est produite lors de l'inscription
-                setError('Erreur lors de l\'inscription');
+                const errorData = await response.json();
+                setError(errorData.message);
             }
         } catch (error) {
             console.log('Erreur lors de la requête :', error);
-            setError('Erreur lors de la requête');
+            setError('Erreur lors de l\'inscription');
         }
     };
 

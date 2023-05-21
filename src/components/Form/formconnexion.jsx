@@ -14,8 +14,8 @@ function UserLogin() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://eworld-api.osc-fr1.scalingo.io/api/users', {
-                method: 'GET',
+            const response = await fetch('https://eworld-api.osc-fr1.scalingo.io/user/login', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -27,8 +27,16 @@ function UserLogin() {
 
             if (response.ok) {
                 // La connexion utilisateur est réussie
-                console.log('Connexion réussie !');
-                // Faire quelque chose avec la réponse, comme stocker un token d'authentification
+                const responseData = await response.json();
+                const user_id = responseData.user_id; // Assurez-vous que votre API renvoie l'ID de l'utilisateur dans la réponse
+                const user_name = responseData.username;
+                console.log('Connexion réussie ! User ID:', user_id);
+                localStorage.setItem('user_id', user_id);
+                localStorage.setItem('username', user_name);
+                response.json().then((data) => {
+                    console.log(data);
+                });
+
             } else {
                 // Une erreur s'est produite lors de la connexion
                 const errorData = await response.json();

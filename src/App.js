@@ -12,6 +12,7 @@ import Addgift from './components/Gift/Addgift';
 import ProfilePage from "./components/Profil";
 import Inscriptionpage from "./components/inscriptionpage";
 import Loginpage from "./components/loginpage";
+import Dashboard from "./components/Dashboard"
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/Profil" element={<ProfilePage />} />
           <Route path="/Inscription" element={<Inscriptionpage />} />
           <Route path="/Connexion" element={<Loginpage />} />
+          <Route path="/Dashboard" element={<Dashboard/>}/>
       </>
     )
   );
