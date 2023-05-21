@@ -22,9 +22,7 @@ export default function App() {
       <>
         <Route path="/" element={<Home />} />
         <Route path="/task" element={<Task />} />
-        <Route path="/task/add" element={<Addtask />} />
         <Route path="/gift" element={<Gift />} />
-        <Route path="/gift/add" element={<Addgift />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/inscription" element={<Inscriptionpage />} />
         <Route path="/connexion" element={<Loginpage />} />
