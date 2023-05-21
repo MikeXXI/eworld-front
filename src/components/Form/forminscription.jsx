@@ -7,26 +7,26 @@ import "../../styles/style.css"
 
 
 function UserRegistration() {
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
+    // const [nom, setNom] = useState('');
+    // const [prenom, setPrenom] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://eworld-api.osc-fr1.scalingo.io/api/users', {
+            const response = await fetch('https://eworld-api.osc-fr1.scalingo.io/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    nom,
-                    prenom,
                     email,
                     password,
+                    username
                 }),
             });
 
@@ -34,7 +34,7 @@ function UserRegistration() {
                 // L'utilisateur a été inscrit avec succès
                 console.log('Inscription réussie !');
                 // Rediriger vers la page des tâches
-                window.location.href = '/tasks';
+                window.location.href = '/';
             } else {
                 // Une erreur s'est produite lors de l'inscription
                 setError('Erreur lors de l\'inscription');
@@ -65,7 +65,7 @@ function UserRegistration() {
             )}
             <form onSubmit={handleSubmit}
                   style={{display: 'flex', flexDirection: 'column', alignItems: 'center', color: "black"}}>
-                <label style={{marginBottom: '15px', padding: "10px", background: "white", borderRadius: "20px"}}>
+                {/* <label style={{marginBottom: '15px', padding: "10px", background: "white", borderRadius: "20px"}}>
                     <FontAwesomeIcon icon={faUser} style={{marginRight: '8px'}}/>
                     <input
                         style={{padding: '8px', border: "none"}}
@@ -74,15 +74,15 @@ function UserRegistration() {
                         value={nom}
                         onChange={(e) => setNom(e.target.value)}
                     />
-                </label>
+                </label> */}
                 <label style={{marginBottom: '15px', padding: "10px", background: "white", borderRadius: "20px"}}>
                     <FontAwesomeIcon icon={faUser} style={{marginRight: '8px'}}/>
                     <input
                         style={{padding: '8px', border: "none"}}
-                        placeholder="Prénom"
+                        placeholder="Username"
                         type="text"
-                        value={prenom}
-                        onChange={(e) => setPrenom(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </label>
                 <label style={{marginBottom: '15px', padding: "10px", background: "white", borderRadius: "20px"}}>
