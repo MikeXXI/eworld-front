@@ -7,8 +7,6 @@ function Friends() {
     const userUtil = localStorage.getItem("user_id");
 
     const [users, setUsers] = useState([]);
-    const [open, setOpen] = useState(false);
-    const [userId, setUserId] = useState(null);
     const [email, setEmail] = useState('');
     const [openGiftsModal, setOpenGiftsModal] = useState(false);
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -39,8 +37,7 @@ function Friends() {
         })
             .then(response => {
                 if (response.ok) {
-                    handleClose();
-                    window.location.reload(); // Refresh the page
+                    window.location.reload(); // Rafraîchir la page
                 } else {
                     throw new Error('Error add friend ');
                 }
