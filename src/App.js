@@ -12,7 +12,8 @@ import Inscriptionpage from "./components/inscriptionpage";
 import Loginpage from "./components/loginpage";
 import Dashboard from "./components/Dashboard";
 import Logout from "./components/logout";
-import Friends from "./components/Friends";
+import Friends from "./components/Friend/Friends";
+import FriendsDetails from "./components/Friend/FriendsDetails";
 
 
 export default function App() {
@@ -27,7 +28,9 @@ export default function App() {
         <Route path="/connexion" element={<Loginpage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/friends" element={<Friends />} />
+        <Route path="/friends" element={<Friends />}>
+          <Route path="/friends/:id/list" element={<FriendsDetails />} />
+        </Route>
       </>
     )
   );
