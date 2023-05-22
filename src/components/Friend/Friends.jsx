@@ -13,8 +13,9 @@ function Friends() {
     const [userGifts, setUserGifts] = useState([]);
 
     const handleSubmit = (userId) => {
-        fetch(`https://eworld-api.osc-fr1.scalingo.io/api/users/${userId}`, {
-            method: "DELETE",
+        fetch(`https://eworld-api.osc-fr1.scalingo.io/users/${userUtil}/friends/${userId}`, {
+            method: 'DELETE'
+
         })
             .then((response) => {
                 if (response.ok) {
