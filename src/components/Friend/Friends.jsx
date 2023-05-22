@@ -1,7 +1,10 @@
 // Friends.jsx
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "@mui/material";
-import { Link } from "react-router-dom";
+// import CardContent from "@mui/material/CardContent";
+// import CardMedia from "@mui/material/CardMedia";
+// import Typography from "@mui/material/Typography";
+// import Card from "@mui/material/Card";
 
 function Friends() {
     const userUtil = localStorage.getItem("user_id");
@@ -12,6 +15,7 @@ function Friends() {
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [userGifts, setUserGifts] = useState([]);
+    // const [userGiftsId, setUserGiftsId] = useState();
 
     const handleSubmit = (userId) => {
         fetch(`https://eworld-api.osc-fr1.scalingo.io/users/${userUtil}/friends/${userId}`, {
@@ -92,7 +96,7 @@ function Friends() {
     }, []);
 
     const fetchGifts = (userId) => {
-        const url = `https://eworld-api.osc-fr1.scalingo.io/users/${userId}/gifts`;
+        const url = `https://eworld-api.osc-fr1.scalingo.io/api/gifts`;
         fetch(url, {
             method: "GET",
             headers: {
@@ -102,12 +106,17 @@ function Friends() {
             .then((res) => res.json())
             .then((data) => {
                 setUserGifts(data);
+                // setUserGiftsId(userId);
+
             })
             .catch((error) => {
                 console.error(error);
                 alert("Erreur lors du chargement des cadeaux de l'utilisateur");
             });
+        
+        
     };
+    // <FriendListGift userGifts={userGifts} userGiftsId={userGiftsId} />
 
     return (
         <div>
@@ -116,41 +125,41 @@ function Friends() {
                 Retour
             </Button>
             <input
-                    type="email"
-                    value={email}
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    style={{ border: "none" }}
+                type="email"
+                value={email}
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                style={{ border: "none" }}
 
-                />
+            />
 
-                    <Button variant="contained" onClick={() => handleSubmit2(email)}>
-                        Ajouter un ami
-                    </Button>           
-            
+            <Button variant="contained" onClick={() => handleSubmit2(email)}>
+                Ajouter un ami
+            </Button>
+
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
-                <tr>
-                    <th style={tableHeaderStyle}>ID</th>
-                    <th style={tableHeaderStyle}>Email</th>
-                    <th style={tableHeaderStyle}>Actions</th>
-                </tr>
+                    <tr>
+                        <th style={tableHeaderStyle}>ID</th>
+                        <th style={tableHeaderStyle}>Email</th>
+                        <th style={tableHeaderStyle}>Actions</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {users.map((user) => (
-                    <tr key={user.id}>
-                        <td style={tableCellStyle}>{user.id}</td>
-                        <td style={tableCellStyle}>{user.email}</td>
-                        <td style={tableCellStyle}>
-                            <button className="buttonsupp" onClick={() => modalOpenGifts(user.id)}>
-                                Voir le contenu de l'utilisateur
-                            </button>
-                            <button className="buttonsupp" onClick={() => modalOpenDelete(user.id)}>
-                                Supprimer des amis
-                            </button>
-                        </td>
-                    </tr>
-                ))}
+                    {users.map((user) => (
+                        <tr key={user.id}>
+                            <td style={tableCellStyle}>{user.id}</td>
+                            <td style={tableCellStyle}>{user.email}</td>
+                            <td style={tableCellStyle}>
+                                <button className="buttonsupp" onClick={() => modalOpenGifts(user.id)}>
+                                    Voir le contenu de l'utilisateur
+                                </button>
+                                <button className="buttonsupp" onClick={() => modalOpenDelete(user.id)}>
+                                    Supprimer des amis
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
             <Modal
@@ -194,6 +203,57 @@ function Friends() {
         </div>
     );
 }
+
+// function FriendListGift({ userGifts, userGiftsId }) {
+//     const user_id = String("/api/users/" + userGiftsId);
+
+//     const gifts = [];
+
+//     console.log(user_id);
+
+//     if (Array.isArray(userGifts)) {
+//         userGifts.forEach((gift) => { // Extraire le nombre de l'ID de l'utilisateur du cadeau
+//             if (gift.userId === user_id) {
+//                 gifts.push(
+//                     <FriendGiftcard
+//                         key={gift.id}
+//                         id={gift.id}
+//                         name={gift.name}
+//                         adress={gift.adress}
+//                         price={gift.price}
+//                         description={gift.description}
+//                     />
+//                 );
+//             }
+//         });
+//     }
+//    return gifts;
+// }
+
+// function FriendGiftcard({ id, name, adress, price, description }) {
+
+//     return (
+//         <Grid>
+//             <Card>
+//                 <CardContent>
+//                     <Typography>
+//                         {id}
+//                         {name}
+//                     </Typography>
+//                     <Typography>
+//                         {price}€
+//                     </Typography>
+//                     <Typography>
+//                         {description}
+//                     </Typography>
+//                 </CardContent>
+//             </Card>
+//         </Grid>
+//     )
+// }
+
+
+
 
 const tableHeaderStyle = {
     backgroundColor: "#f2f2f2",
