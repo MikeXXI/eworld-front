@@ -17,7 +17,7 @@ function Tasklist({taskData}) {
                     <Taskcard
                         key={task.id}
                         id={task.id}
-                        title={task.name}
+                        title={task.title}
                         description={task.description}
                     />
                 );

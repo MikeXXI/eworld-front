@@ -10,6 +10,8 @@ function UserRegistration() {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [error, setError] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,6 +26,7 @@ function UserRegistration() {
                     email,
                     password,
                     username,
+                    imageUrl,
                 }),
             });
 
@@ -95,6 +98,9 @@ function UserRegistration() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                </label>
+                <label>
+                    <input placeholder={"Lien photo profil"}  type="text" id="adress" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} style={{padding: "15px", borderRadius: "20px", border: "none", marginBottom: "20px"}}/>
                 </label>
                 <Link to='/'>
                     <button style={{ margin: '20px', color: '#007BFF', cursor: 'pointer', background: "none", border: "none" }}>

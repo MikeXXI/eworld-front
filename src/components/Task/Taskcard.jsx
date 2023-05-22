@@ -55,7 +55,9 @@ function Taskcard({ id, title, description }) {
                             {imageUrl && (
                             <img src={imageUrl} style={{ width: '8%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
                             )}
+                            <div>
                             {title}
+                            </div>
                         </div>
                         <button className="buttonsupp" onClick={modalOpen}>
                             <DeleteIcon />
