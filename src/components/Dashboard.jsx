@@ -60,21 +60,9 @@ function Dashboard() {
     return (
         <div>
             <h1 style={{textAlign: 'center'}}>Dashboard</h1>
-            <Link to={`/task`} style={{display: "flex", justifyContent: "center", margin: "3%"}}>
-                <button style={{
-                    borderRadius: 20,
-                    fontSize: "15px",
-                    color: "black",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    background: "#9CECFF",
-                    padding: "10px",
-                    textDecoration: "none",
-                    border: "none",
-                }}>
-                    Retour
-                </button>
-            </Link>
+            <Button variant="contained" onClick={() => window.location.href = "/task"}>
+                Retour
+            </Button>
             <table style={{width: '100%', borderCollapse: 'collapse'}}>
                 <thead>
                 <tr>

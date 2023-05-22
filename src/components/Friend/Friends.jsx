@@ -10,6 +10,7 @@ function Friends() {
     const [users, setUsers] = useState([]);
     const [open, setOpen] = useState(false);
     const [userId, setUserId] = useState(null);
+    const [email, setEmail] = useState('');
 
     const handleSubmit = (userId) => {
         fetch(`https://eworld-api.osc-fr1.scalingo.io/users/${userUtil}/friends/${userId}`, {
@@ -26,6 +27,23 @@ function Friends() {
             .catch(error => {
                 console.error(error);
                 alert("Erreur lors de la suppression de l'amitié");
+            });
+    };
+    const handleSubmit2 = (email) => {
+        fetch(`https://eworld-api.osc-fr1.scalingo.io/users/${userUtil}/friends/${email}`, {
+            method: 'POST'
+        })
+            .then(response => {
+                if (response.ok) {
+                    handleClose();
+                    window.location.reload(); // Refresh the page
+                } else {
+                    throw new Error('Error add friend ');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("Erreur requete");
             });
     };
 
@@ -67,21 +85,22 @@ function Friends() {
     return (
         <div>
             <h1 style={{ textAlign: 'center' }}>Vos amis</h1>
-            <Link to={`/task`} style={{ display: "flex", justifyContent: "center", margin: "3%" }}>
-                <button style={{
-                    borderRadius: 20,
-                    fontSize: "15px",
-                    color: "black",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    background: "#9CECFF",
-                    padding: "10px",
-                    textDecoration: "none",
-                    border: "none",
-                }}>
-                    Retour
-                </button>
-            </Link>
+            <Button variant="contained" onClick={() => window.location.href = "/task"}>
+                Retour
+            </Button>
+            <input
+                    type="email"
+                    value={email}
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{ border: "none" }}
+
+                />
+
+                    <Button variant="contained" onClick={() => handleSubmit2(email)}>
+                        Ajouter un ami
+                    </Button>           
+            
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                     <tr>
