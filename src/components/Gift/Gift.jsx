@@ -17,6 +17,7 @@ function Gift() {
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
     const nbGift = localStorage.getItem('nbGift');
+    const [giftCount, setGiftCount] = useState(parseInt(nbGift) || 0);
 
 
     if (localStorage.getItem('user_id') === null) {
@@ -29,6 +30,7 @@ function Gift() {
             .then((res) => res.json())
             .then((data) => {
                 setGiftData(data);
+                setGiftCount(data.length);
                 setLoading(false);
             })
             .catch((error) => {
@@ -51,6 +53,7 @@ function Gift() {
 
     const handleAddGift = () => {
         fetchData();
+        setGiftCount(giftCount + 1);
     };
 
     const reversedGiftData = [...giftData].reverse();
@@ -112,7 +115,7 @@ function Gift() {
 
             <Dialog open={openModal} onClose={handleCloseModal}>
                 <DialogContent style={{ background: "#9CECFF", borderRadius: "20px" }}>
-                    <Addgift onCloseModal={handleCloseModal} onAddGift={handleAddGift} />
+                    <Addgift onCloseModal={handleCloseModal} onAddGift={handleAddGift} giftCount={giftCount}/>
                 </DialogContent>
             </Dialog>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
-const Addgift = ({ onCloseModal, onAddGift }) => {
+const Addgift = ({ onCloseModal, onAddGift, giftCount }) => {
     const [name, setName] = useState('');
     const [adress, setAdress] = useState('');
     const [price, setPrice] = useState('');
@@ -30,7 +30,8 @@ const Addgift = ({ onCloseModal, onAddGift }) => {
             .then(jsonData => console.log(jsonData))
             .then(jsonData => {
                 toast.success('Cadeau crée avec succès');
-                onAddGift(); // Appeler la fonction onAddTask pour mettre à jour la liste des tâches
+                onAddGift();
+                localStorage.setItem('nbGift', giftCount);// Appeler la fonction onAddTask pour mettre à jour la liste des tâches
                 onCloseModal(); // Fermer la modal
             })
             .catch(error => console.error(error));

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
-const Addtask = ({ onCloseModal, onAddTask }) => {
+const Addtask = ({ onCloseModal, onAddTask, taskCount }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const user_id = localStorage.getItem('user_id');
@@ -27,6 +27,7 @@ const Addtask = ({ onCloseModal, onAddTask }) => {
             .then(jsonData => {
                 toast.success('Tâche créée avec succès');
                 onAddTask(); // Appeler la fonction onAddTask pour mettre à jour la liste des tâches
+                localStorage.setItem('nbTask', taskCount);
                 onCloseModal(); // Fermer la modal
             })
             .catch(error => console.error(error));

@@ -17,6 +17,8 @@ function Task() {
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
     const nbTask = localStorage.getItem('nbTask');
+    const [taskCount, setTaskCount] = useState(parseInt(nbTask) || 0);
+
 
     if (localStorage.getItem('user_id') === null) {
         window.location.href = '/connexion';
@@ -28,6 +30,7 @@ function Task() {
             .then((res) => res.json())
             .then((data) => {
                 setTaskData(data);
+                setTaskCount(data.length);
                 setLoading(false);
             })
             .catch((error) => {
@@ -50,6 +53,7 @@ function Task() {
 
     const handleAddTask = () => {
         fetchData();
+        setTaskCount(taskCount + 1);
     };
 
     const reversedTaskData = [...taskData].reverse();
@@ -123,7 +127,7 @@ function Task() {
             {/* Modal */}
             <Dialog open={openModal} onClose={handleCloseModal}>
                 <DialogContent style={{background: "#9CECFF", borderRadius: "20px"}}>
-                    <Addtask onCloseModal={handleCloseModal} onAddTask={handleAddTask}/>
+                    <Addtask onCloseModal={handleCloseModal} onAddTask={handleAddTask} taskCount={taskCount}/>
                 </DialogContent>
             </Dialog>
         </div>
