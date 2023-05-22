@@ -47,7 +47,7 @@ function Friends() {
     }
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/users/${userUtil}/friends`, {
+        fetch(`https://eworld-api.osc-fr1.scalingo.io/users/${userUtil}/friends`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
