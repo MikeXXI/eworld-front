@@ -2,11 +2,14 @@ import React from "react"
 import {Grid} from "@mui/material";
 import Taskcard from "./Taskcard";
 
+// Définition du composant fonctionnel "Tasklist"
 function Tasklist({taskData}) {
 
+    //Récupération de l'ID de l'utilisateur à partir du stockage local
     const user_id = localStorage.getItem('user_id'); 
     const userId = String("/api/users/"+user_id);  
 
+    // Création d'un tableau "tasks" pour stocker les composants Taskcard qui correspondent à l'utilisateur courant
     const tasks = [];
 
     if (Array.isArray(taskData)) {
@@ -24,6 +27,7 @@ function Tasklist({taskData}) {
             }
         });
     }
+    // Stockage du nombre de tâches dans le stockage local
     const nbTask = tasks.length;
     localStorage.setItem('nbTask', nbTask);
 

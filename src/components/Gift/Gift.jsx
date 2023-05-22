@@ -13,15 +13,18 @@ import Addgift from "../Gift/Addgift";
 import Header from '../Header';
 
 function Gift() {
+    //Utilisation de hooks pour gérer l'état du composant
     const [giftData, setGiftData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
     const [giftCount, setGiftCount] = useState(0);
 
+    //Vérification si l'ID de l'utilisateur est présent dans le stockage local, sinon redirection vers la page de connexion
     if (localStorage.getItem('user_id') === null) {
         window.location.href = '/connexion';
     }
 
+    //Définition d'une fonction fetchData qui récupère les données des cadeaux depuis une API
     const fetchData = () => {
         setLoading(true);
         fetch("https://eworld-api.osc-fr1.scalingo.io/api/gifts")
@@ -29,7 +32,7 @@ function Gift() {
             .then((data) => {
                 setGiftData(data);
                 setLoading(false);
-                localStorage.setItem('giftCount', data.length);// Mise à jour de giftCount                
+                localStorage.setItem('giftCount', data.length);
             })
             .catch((error) => {
                 console.error(error);
@@ -37,15 +40,18 @@ function Gift() {
             });
     };
 
+    //Utilisation de useEffect pour exécuter fetchData une fois que le composant est monté
     useEffect(() => {
         fetchData();
     }, []);
 
+    // Utilisation de useEffect pour mettre à jour giftCount à chaque changement de giftData
     useEffect(() => {
         const giftCountFromStorage = localStorage.getItem('nbGift') || 0;
         setGiftCount(parseInt(giftCountFromStorage));
     }, [giftData]);
 
+    //Définition de fonctions pour ouvrir et fermer un dialogue modal
     const handleOpenModal = () => {
         setOpenModal(true);
     };
@@ -54,14 +60,18 @@ function Gift() {
         setOpenModal(false);
     };
 
+    // Définition d'une fonction handleAddGift pour exécuter fetchData lorsqu'un nouveau cadeau est ajouté
     const handleAddGift = () => {
         fetchData();
     };
 
+    // Création d'une copie inversée des données des cadeaux
     const reversedGiftData = [...giftData].reverse();
 
+    // Récupération du rôle de l'utilisateur à partir du stockage local
     const role = localStorage.getItem('roles');
 
+    // Rendu du composant
     return (
         <div>
             <ToastContainer/>

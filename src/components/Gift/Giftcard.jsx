@@ -17,11 +17,13 @@ function Giftcard({id, name, adress, price, description}) {
     const [editedDescription, setEditedDescription] = useState(description);
     const [imageUrl, setImageUrl] = useState("");
 
+    //Utilisation de useEffect pour récupérer l'URL de l'image à partir du stockage local
     useEffect(() => {
         const storedImageUrl = localStorage.getItem("imageUrl");
         setImageUrl(storedImageUrl);
     }, []);
 
+    //Gestionnaire d'événement pour la soumission du formulaire de suppression de cadeaux
     const handleSubmit = (giftId) => {
         fetch(`https://eworld-api.osc-fr1.scalingo.io/api/gifts/${giftId}`, {
             method: "DELETE",
@@ -41,6 +43,7 @@ function Giftcard({id, name, adress, price, description}) {
             });
     };
 
+    //Gestionnaire d'événement pour la mise à jour de la tâche
     const handleUpdate = (id) => {
         const updatedGift = {
             name: editedName,
@@ -71,6 +74,7 @@ function Giftcard({id, name, adress, price, description}) {
             });
     };
 
+    //Gestion des modales d'ouverture et de fermeture
     const handleOpen = () => {
         setOpen(true);
     };

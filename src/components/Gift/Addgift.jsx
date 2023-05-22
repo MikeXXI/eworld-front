@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
+//Définition du composant fonctionnel "Addgift" :
 const Addgift = ({ onCloseModal, onAddGift, giftCount }) => {
     const [name, setName] = useState('');
     const [adress, setAdress] = useState('');
@@ -9,6 +10,7 @@ const Addgift = ({ onCloseModal, onAddGift, giftCount }) => {
     const user_id = localStorage.getItem('user_id');
     const userId = String("/api/users/"+user_id);
 
+    // Gestionnaire d'événement pour l'ajout d'un cadeau
     const handleAddGift = (event) => {
         event.preventDefault();
         const data = {

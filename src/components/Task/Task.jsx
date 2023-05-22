@@ -13,15 +13,18 @@ import CircularProgress from "@mui/material/CircularProgress";
 import sphere from "../../assets/sphère3d.png";
 
 function Task() {
+    //Utilisation de hooks pour gérer l'état du composant
     const [taskData, setTaskData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
     const [nbTask, setNbTask] = useState(0); // Initialize with 0 instead of ""
 
+    //Vérification si l'ID de l'utilisateur est présent dans le stockage local, sinon redirection vers la page de connexion
     if (localStorage.getItem('user_id') === null) {
         window.location.href = '/connexion';
     }
 
+    //Définition d'une fonction fetchData qui récupère les données des cadeaux depuis une API
     const fetchData = () => {
         setLoading(true);
         fetch("https://eworld-api.osc-fr1.scalingo.io/api/tasks")
@@ -37,16 +40,18 @@ function Task() {
             });
     };
 
-
+    //Utilisation de useEffect pour exécuter fetchData une fois que le composant est monté
     useEffect(() => {
         fetchData();
     }, []);
 
+    // Utilisation de useEffect pour mettre à jour giftCount à chaque changement de giftData
     useEffect(() => {
         const nbTaskFromStorage = localStorage.getItem('nbTask') || 0;
         setNbTask(parseInt(nbTaskFromStorage));
     }, [taskData]);
 
+    //Définition de fonctions pour ouvrir et fermer un dialogue modal
     const handleOpenModal = () => {
         setOpenModal(true);
     };
@@ -55,14 +60,18 @@ function Task() {
         setOpenModal(false);
     };
 
+    // Définition d'une fonction handleAddGift pour exécuter fetchData lorsqu'un nouveau cadeau est ajouté
     const handleAddTask = () => {
         fetchData();
     };
 
+    // Création d'une copie inversée des données des cadeaux
     const reversedTaskData = [...taskData].reverse();
 
+    // Récupération du rôle de l'utilisateur à partir du stockage local
     const role = localStorage.getItem('roles');
 
+    // Rendu du composant
     return (
         <div>
             <ToastContainer />

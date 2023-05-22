@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Grid, Modal, Button, TextField } from "@mui/material";
+import {Grid, Modal, Button, TextField} from "@mui/material";
 import '../../styles/style.css';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-function Taskcard({ id, title, description }) {
+function Taskcard({id, title, description}) {
     const [open, setOpen] = useState(false);
     const [editing, setEditing] = useState(false);
     const [editedName, setEditedName] = useState(title);
     const [editedDescription, setEditedDescription] = useState(description);
     const [imageUrl, setImageUrl] = useState('');
 
+    //Utilisation de useEffect pour récupérer l'URL de l'image à partir du stockage local
     useEffect(() => {
         const storedImageUrl = localStorage.getItem('imageUrl');
         setImageUrl(storedImageUrl);
     }, []);
 
+    //Gestionnaire d'événement pour la soumission du formulaire de suppression de tâche
     const handleSubmit = (taskId) => {
         fetch(`https://eworld-api.osc-fr1.scalingo.io/api/tasks/${taskId}`, {
             method: 'DELETE'
@@ -36,6 +38,7 @@ function Taskcard({ id, title, description }) {
             });
     };
 
+    //Gestionnaire d'événement pour la mise à jour de la tâche
     const handleUpdate = (id) => {
         const updatedTask = {
             title: editedName,
@@ -64,6 +67,7 @@ function Taskcard({ id, title, description }) {
             });
     };
 
+    //Gestion des modales d'ouverture et de fermeture
     const handleOpen = () => {
         setOpen(true);
     };
@@ -91,18 +95,25 @@ function Taskcard({ id, title, description }) {
             <Card className="cardContent">
                 <CardContent>
                     <div className="titleSup">
-                        <div style={{ margin: 0, display: "flex", alignItems: "center", textTransform: "uppercase", fontWeight: "900" }}>
+                        <div style={{
+                            margin: 0,
+                            display: "flex",
+                            alignItems: "center",
+                            textTransform: "uppercase",
+                            fontWeight: "900"
+                        }}>
                             {imageUrl && (
-                                <img src={imageUrl} style={{ width: '8%', borderRadius: 100, marginRight: "20px" }} alt="imgPersonne" />
+                                <img src={imageUrl} style={{width: '8%', borderRadius: 100, marginRight: "20px"}}
+                                     alt="imgPersonne"/>
                             )}
-                                {title}
+                            {title}
                         </div>
-                        <div style={{display:"flex", flexDirection: "row"}}>
+                        <div style={{display: "flex", flexDirection: "row"}}>
                             <button className="buttonsupp" onClick={handleEdit}>
-                                <EditIcon />
+                                <EditIcon/>
                             </button>
                             <button className="buttonsupp" onClick={handleOpen}>
-                                <DeleteIcon />
+                                <DeleteIcon/>
                             </button>
                         </div>
                     </div>

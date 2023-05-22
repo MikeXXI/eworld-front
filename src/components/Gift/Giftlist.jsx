@@ -2,10 +2,13 @@ import React from "react"
 import { Grid } from "@mui/material";
 import Giftcard from "./Giftcard";
 
+// Définition du composant fonctionnel "Giftlist"
 function Giftlist({giftData}) {
+    //Récupération de l'ID de l'utilisateur à partir du stockage local
     const user_id = localStorage.getItem('user_id');
     const userId = String("/api/users/"+user_id);
 
+    // Création d'un tableau "Gifts" pour stocker les composants Giftcard qui correspondent à l'utilisateur courant
     const gifts = [];
 
     if (Array.isArray(giftData)) {
@@ -24,6 +27,7 @@ function Giftlist({giftData}) {
             }
         });
     }
+    //Stockage du nombre de cadeaux dans le stockage local
     const nbGift = gifts.length;
     localStorage.setItem('nbGift', nbGift);
     return (

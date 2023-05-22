@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
+//Définition du composant fonctionnel "Addgtask" :
 const Addtask = ({ onCloseModal, onAddTask, taskCount }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const user_id = localStorage.getItem('user_id');
     const userId = String("/api/users/"+user_id);
 
-
+// Gestionnaire d'événement pour l'ajout d'une tâche
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = {
