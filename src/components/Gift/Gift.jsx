@@ -28,8 +28,8 @@ function Gift() {
             .then((res) => res.json())
             .then((data) => {
                 setGiftData(data);
-                setGiftCount(data.length); // Mise à jour de giftCount
                 setLoading(false);
+                localStorage.setItem('giftCount', data.length);// Mise à jour de giftCount                
             })
             .catch((error) => {
                 console.error(error);
@@ -40,6 +40,10 @@ function Gift() {
     useEffect(() => {
         fetchData();
     }, []);
+    useEffect(() => {
+        const giftCountFromStorage = localStorage.getItem('nbGift') || 0;
+        setGiftCount(parseInt(giftCountFromStorage));
+    }, [giftData]);
 
     const handleOpenModal = () => {
         setOpenModal(true);
