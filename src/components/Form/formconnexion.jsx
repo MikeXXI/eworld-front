@@ -9,6 +9,7 @@ function UserLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [loginError, setLoginError] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +40,7 @@ function UserLogin() {
                 // Une erreur s'est produite lors de la connexion
                 const errorData = await response.json();
                 setError(errorData.message);
+                setLoginError(true);
             }
         } catch (error) {
             console.log('Erreur lors de la requête :', error);
@@ -50,6 +52,11 @@ function UserLogin() {
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <img src={logo} alt='logo e-world' className="logoeworld"/>
             <h1 style={{fontSize: '40px', marginBottom: '20px', color: '#5E8CFF',}}>Connexion</h1>
+            {loginError && (
+                <p style={{ color: 'red', marginBottom: '16px', textAlign: 'center', maxWidth: '300px', fontWeight: 'bold', border: '1px solid', padding: '10px', background: 'antiquewhite' }}>
+                    Mot de passe ou utilisateur incorrect.
+                </p>
+            )}
             {error && (
                 <p style={{color: 'red', marginBottom: '16px', textAlign: 'center', maxWidth: '300px', fontWeight: "bold", border: "1px solid", padding: "10px", background: "antiquewhite"}}>
                     {error}
@@ -65,6 +72,11 @@ function UserLogin() {
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
                         style={{border: "none"}}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                handleSubmit(e);
+                            }
+                        }}
                     />
                 </label>
                 <label style={{marginBottom: '15px', padding: "10px", background: "white", borderRadius: "20px"}}>
@@ -75,6 +87,11 @@ function UserLogin() {
                         placeholder="Mot de passe"
                         onChange={(e) => setPassword(e.target.value)}
                         style={{border: "none"}}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                handleSubmit(e);
+                            }
+                        }}
                     />
                 </label>
                 <Link to='/'>

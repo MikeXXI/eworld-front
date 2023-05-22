@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Grid, Fab, Dialog, DialogContent} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Grid, Fab, Dialog, DialogContent } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Tasklist from './Tasklist';
 import Weather from '../Weather';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../styles/style.css';
 import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import Addtask from '../Task/Addtask';
 import Header from '../Header';
 import CircularProgress from "@mui/material/CircularProgress";
@@ -16,9 +16,7 @@ function Task() {
     const [taskData, setTaskData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
-    const nbTask = localStorage.getItem('nbTask');
-    const [taskCount, setTaskCount] = useState(parseInt(nbTask) || 0);
-
+    const [nbTask, setNbTask] = useState(0); // Initialize with 0 instead of ""
 
     if (localStorage.getItem('user_id') === null) {
         window.location.href = '/connexion';
@@ -30,8 +28,8 @@ function Task() {
             .then((res) => res.json())
             .then((data) => {
                 setTaskData(data);
-                setTaskCount(data.length);
                 setLoading(false);
+                localStorage.setItem('nbTask', data.length);
             })
             .catch((error) => {
                 console.error(error);
@@ -39,9 +37,15 @@ function Task() {
             });
     };
 
+
     useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const nbTaskFromStorage = localStorage.getItem('nbTask') || 0;
+        setNbTask(parseInt(nbTaskFromStorage));
+    }, [taskData]);
 
     const handleOpenModal = () => {
         setOpenModal(true);
@@ -53,21 +57,18 @@ function Task() {
 
     const handleAddTask = () => {
         fetchData();
-        setTaskCount(taskCount + 1);
     };
 
     const reversedTaskData = [...taskData].reverse();
 
     const role = localStorage.getItem('roles');
 
-
     return (
         <div>
-            <ToastContainer/>
-            <Header/>
+            <ToastContainer />
+            <Header />
             {role === 'ADMIN' && (
-                <Link to="/dashboard"
-                      style={{marginLeft: "50px", textDecoration: "none", display: "flex", justifyContent: "center"}}>
+                <Link to="/dashboard" style={{ marginLeft: "50px", textDecoration: "none", display: "flex", justifyContent: "center" }}>
                     <button style={{
                         borderRadius: 20,
                         fontSize: "15px",
@@ -85,40 +86,30 @@ function Task() {
             )}
             {loading ? (
                 <Grid>
-                    <CircularProgress/>
+                    <CircularProgress />
                 </Grid>
             ) : (
-                <div style={{display: 'flex', justifyContent: 'space-between'}} className="container_weather_taskgift">
-                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: "15%"}}
-                         className="weather_sphere">
-                        <Weather/>
-                        <img src={sphere} style={{width: "20vw", borderRadius: 100, marginTop: "50px"}} alt="sphere"/>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }} className="container_weather_taskgift">
+                    <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%" }} className="weather_sphere">
+                        <Weather />
+                        <img src={sphere} style={{ width: "20vw", borderRadius: 100, marginTop: "50px" }} alt="sphere" />
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'column'}} className="container_task_gift">
-                        <div style={{display: "flex", alignItems: "center"}} className="container_add">
+                    <div style={{ display: 'flex', flexDirection: 'column' }} className="container_task_gift">
+                        <div style={{ display: "flex", alignItems: "center" }} className="container_add">
                             <Fab color="primary" aria-label="add" onClick={handleOpenModal}>
-                                <AddIcon/>
+                                <AddIcon />
                             </Fab>
-                            <Link to={`/task`}
-                                  style={{marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white"}}>
-                                <p style={{
-                                    fontSize: "40px",
-                                    margin: "20px",
-                                    color: "white",
-                                    fontWeight: "100"
-                                }}>({nbTask}) Tâches</p>
-                            </Link>
-                            <Link to={`/gift`} style={{marginLeft: "50px", textDecoration: "none"}}>
-                                <p style={{
-                                    fontSize: "40px",
-                                    margin: "20px",
-                                    color: "white",
-                                    fontWeight: "100"
-                                }}>Cadeaux</p>
+                            {nbTask !== undefined && (
+                                <Link to={`/task`} style={{ marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white" }}>
+                                    <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>({nbTask}) Tâches</p>
+                                </Link>
+                            )}
+                            <Link to={`/gift`} style={{ marginLeft: "50px", textDecoration: "none" }}>
+                                <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>Cadeaux</p>
                             </Link>
                         </div>
                         <Grid>
-                            <Tasklist taskData={reversedTaskData}/>
+                            <Tasklist taskData={reversedTaskData} />
                         </Grid>
                     </div>
                 </div>
@@ -126,8 +117,8 @@ function Task() {
 
             {/* Modal */}
             <Dialog open={openModal} onClose={handleCloseModal}>
-                <DialogContent style={{background: "#9CECFF", borderRadius: "20px"}}>
-                    <Addtask onCloseModal={handleCloseModal} onAddTask={handleAddTask} taskCount={taskCount}/>
+                <DialogContent style={{ background: "#9CECFF", borderRadius: "20px" }}>
+                    <Addtask onCloseModal={handleCloseModal} onAddTask={handleAddTask} />
                 </DialogContent>
             </Dialog>
         </div>

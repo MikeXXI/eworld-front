@@ -16,9 +16,7 @@ function Gift() {
     const [giftData, setGiftData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
-    const nbGift = localStorage.getItem('nbGift');
-    const [giftCount, setGiftCount] = useState(parseInt(nbGift) || 0);
-
+    const [giftCount, setGiftCount] = useState(0);
 
     if (localStorage.getItem('user_id') === null) {
         window.location.href = '/connexion';
@@ -30,7 +28,7 @@ function Gift() {
             .then((res) => res.json())
             .then((data) => {
                 setGiftData(data);
-                setGiftCount(data.length);
+                setGiftCount(data.length); // Mise à jour de giftCount
                 setLoading(false);
             })
             .catch((error) => {
@@ -53,7 +51,6 @@ function Gift() {
 
     const handleAddGift = () => {
         fetchData();
-        setGiftCount(giftCount + 1);
     };
 
     const reversedGiftData = [...giftData].reverse();
@@ -102,9 +99,11 @@ function Gift() {
                             <Link to={`/task`} style={{ marginLeft: "50px", textDecoration: "none" }}>
                                 <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>Tâches</p>
                             </Link>
-                            <Link to={`/gift`} style={{ marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white" }}>
-                                <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>({nbGift}) Cadeaux</p>
-                            </Link>
+                            {giftCount !== undefined && (
+                                <Link to={`/gift`} style={{ marginLeft: "50px", textDecoration: "none", borderBottom: "2px solid white" }}>
+                                    <p style={{ fontSize: "40px", margin: "20px", color: "white", fontWeight: "100" }}>({giftCount}) Cadeaux</p>
+                                </Link>
+                            )}
                         </div>
                         <Grid>
                             <Giftlist giftData={reversedGiftData}/>

@@ -44,8 +44,8 @@ function Giftcard({id, name, adress, price, description}) {
     const handleUpdate = (id) => {
         const updatedGift = {
             name: editedName,
-            address: editedAddress,
-            price: editedPrice,
+            adress: editedAddress,
+            price: parseInt(editedPrice),
             description: editedDescription,
         };
 

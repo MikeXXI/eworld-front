@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Modal} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import {Link} from "react-router-dom";
 
 function Friends() {
