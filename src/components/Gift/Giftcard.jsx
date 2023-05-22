@@ -107,7 +107,7 @@ function Giftcard({id, name, adress, price, description}) {
                             />
                         )}
                         <p style={{fontSize: "20px", fontWeight: "bold"}}>{name}</p>
-                        <div>
+                        <div style={{display:"flex", flexDirection: "row"}}>
                             <button className="buttonsupp" onClick={handleEdit}>
                                 <EditIcon/>
                             </button>

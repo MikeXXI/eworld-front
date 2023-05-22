@@ -99,7 +99,7 @@ function Taskcard({ id, title, description }) {
                                 {title}
                             </div>
                         </div>
-                        <div>
+                        <div style={{display:"flex", flexDirection: "row"}}>
                             <button className="buttonsupp" onClick={handleEdit}>
                                 <EditIcon />
                             </button>
