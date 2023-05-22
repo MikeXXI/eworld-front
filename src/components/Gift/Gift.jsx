@@ -40,6 +40,7 @@ function Gift() {
     useEffect(() => {
         fetchData();
     }, []);
+
     useEffect(() => {
         const giftCountFromStorage = localStorage.getItem('nbGift') || 0;
         setGiftCount(parseInt(giftCountFromStorage));
