@@ -121,9 +121,7 @@ function Friends() {
     return (
         <div>
             <h1 style={{ textAlign: 'center' }}>Vos amis</h1>
-            <Button variant="contained" onClick={() => window.location.href = "/task"}>
-                Retour
-            </Button>
+            
             <input
                 type="email"
                 value={email}
@@ -135,6 +133,9 @@ function Friends() {
 
             <Button variant="contained" onClick={() => handleSubmit2(email)}>
                 Ajouter un ami
+            </Button>
+            <Button variant="contained" onClick={() => window.location.href = "/task"}>
+                Retour
             </Button>
 
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
