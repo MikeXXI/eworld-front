@@ -12,7 +12,7 @@ function Friends() {
     const [userId, setUserId] = useState(null);
 
     const handleSubmit = (userId) => {
-        fetch(``, {
+        fetch(`https://eworld-api.osc-fr1.scalingo.io/users/${userUtil}/friends/${userId}`, {
             method: 'DELETE'
         })
             .then(response => {
