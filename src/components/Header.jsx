@@ -29,6 +29,9 @@ function Header() {
             <Link to={`/Profil`} style={{ display: "none" }} className="settingsmobil">
                 <SettingsIcon style={{ color: "white" }} />
             </Link>
+            <Link to={`/friends`} style={{ display: "none" }} className="mobilfriend">
+                <FontAwesomeIcon icon={faUserFriends} style={{ color: 'white', fontSize: "20px" }} />
+            </Link>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: "center", width: "20%" }}
                 className="headerProfil">
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>

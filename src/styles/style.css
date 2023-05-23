@@ -153,6 +153,13 @@
         top: 20px;
         right: 20px;
     }
+
+    .mobilfriend {
+        display: initial !important;
+        position: absolute;
+        top: 20px;
+        right: 50px;
+    }
 }
 
 
