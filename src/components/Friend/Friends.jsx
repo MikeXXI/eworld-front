@@ -1,6 +1,6 @@
 // Friends.jsx
-import React, { useEffect, useState } from "react";
-import { Button, Modal } from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {Button, Modal} from "@mui/material";
 // import CardContent from "@mui/material/CardContent";
 // import CardMedia from "@mui/material/CardMedia";
 // import Typography from "@mui/material/Typography";
@@ -113,54 +113,55 @@ function Friends() {
                 console.error(error);
                 alert("Erreur lors du chargement des cadeaux de l'utilisateur");
             });
-        
-        
+
+
     };
     // <FriendListGift userGifts={userGifts} userGiftsId={userGiftsId} />
 
     return (
         <div>
-            <h1 style={{ textAlign: 'center' }}>Vos amis</h1>
-            
-            <input
-                type="email"
-                value={email}
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                style={{ border: "none" }}
+            <h1 style={{textAlign: 'center'}}>Vos amis</h1>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "center", margin: "20px"}}>
+                <input
+                    type="email"
+                    value={email}
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{border: "none", borderRadius: "5px", padding: "10px"}}
 
-            />
+                />
+                <Button variant="contained" onClick={() => handleSubmit2(email)}>
+                    Ajouter un ami
+                </Button>
+                <Button variant="contained" onClick={() => window.location.href = "/task"}>
+                    Retour
+                </Button>
+            </div>
 
-            <Button variant="contained" onClick={() => handleSubmit2(email)}>
-                Ajouter un ami
-            </Button>
-            <Button variant="contained" onClick={() => window.location.href = "/task"}>
-                Retour
-            </Button>
 
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <table style={{width: '100%', borderCollapse: 'collapse'}}>
                 <thead>
-                    <tr>
-                        <th style={tableHeaderStyle}>ID</th>
-                        <th style={tableHeaderStyle}>Email</th>
-                        <th style={tableHeaderStyle}>Actions</th>
-                    </tr>
+                <tr>
+                    <th style={tableHeaderStyle}>ID</th>
+                    <th style={tableHeaderStyle}>Email</th>
+                    <th style={tableHeaderStyle}>Actions</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => (
-                        <tr key={user.id}>
-                            <td style={tableCellStyle}>{user.id}</td>
-                            <td style={tableCellStyle}>{user.email}</td>
-                            <td style={tableCellStyle}>
-                                <button className="buttonsupp" onClick={() => modalOpenGifts(user.id)}>
-                                    Voir le contenu de l'utilisateur
-                                </button>
-                                <button className="buttonsupp" onClick={() => modalOpenDelete(user.id)}>
-                                    Supprimer des amis
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
+                {users.map((user) => (
+                    <tr key={user.id}>
+                        <td style={tableCellStyle}>{user.id}</td>
+                        <td style={tableCellStyle}>{user.email}</td>
+                        <td style={tableCellStyle}>
+                            <button className="buttonsupp" onClick={() => modalOpenGifts(user.id)}>
+                                Voir le contenu de l'utilisateur
+                            </button>
+                            <button className="buttonsupp" onClick={() => modalOpenDelete(user.id)}>
+                                Supprimer des amis
+                            </button>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
             <Modal
@@ -252,8 +253,6 @@ function Friends() {
 //         </Grid>
 //     )
 // }
-
-
 
 
 const tableHeaderStyle = {

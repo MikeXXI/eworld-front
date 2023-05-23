@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Modal} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {Link} from "react-router-dom";
 
 function Dashboard() {
     const [users, setUsers] = useState([]);
@@ -58,9 +57,9 @@ function Dashboard() {
     }, []);
 
     return (
-        <div>
+        <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
             <h1 style={{textAlign: 'center'}}>Dashboard</h1>
-            <Button variant="contained" onClick={() => window.location.href = "/task"}>
+            <Button variant="contained" onClick={() => window.location.href = "/task"} style={{width: '20%', margin: "20px"}} >
                 Retour
             </Button>
             <table style={{width: '100%', borderCollapse: 'collapse'}}>
